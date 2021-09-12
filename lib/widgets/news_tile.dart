@@ -38,7 +38,7 @@ class _NewsTileState extends State<NewsTile> {
                 Flexible(
                   child: Text(
                     widget.feed.title,
-                    style: TextStyle(fontSize: 16),
+                    style: const TextStyle(fontSize: 16),
                   ),
                 ),
               ],
@@ -59,7 +59,7 @@ class _NewsTileState extends State<NewsTile> {
                               Theme.of(context).accentTextTheme.headline1!.color),
                     ),
                   ),
-                  Container(
+                  SizedBox(
                     width: 55,
                     child: TextButton(
                       onPressed: () {

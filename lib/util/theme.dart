@@ -1,45 +1,118 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-//CLARO
 ThemeData light = ThemeData(
     brightness: Brightness.light,
-    primaryColor: Color(0xFFFFFFFF),
-    accentColor: Colors.blue,
-    scaffoldBackgroundColor: Color(0xFFFFFFFF),
-    cardTheme: CardTheme(
-      color: Color(0xFFF1F1F1),
+    primaryColor: const Color(0xFFF3F3F3),
+    accentColor: Colors.red[700],
+    scaffoldBackgroundColor: const Color(0xFFF3F3F3),
+    appBarTheme: const AppBarTheme(
+        color: Color(0xFFF3F3F3),
+        elevation: 0,
+        iconTheme: IconThemeData(
+            color: Color(0xFF000000)
+        ),
+        titleTextStyle: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.w600,
+            color: Color(0xFF000000))),
+    cardTheme: const CardTheme(
+      color: Color(0xFFFFFFFF),
     ),
-    dialogTheme: DialogTheme(
-      backgroundColor: Color(0xFFF9F9F9),
+    dialogTheme: const DialogTheme(
+      backgroundColor: Color(0xFFF3F3F3),
     ),
+    inputDecorationTheme: InputDecorationTheme(
+        contentPadding:
+        const EdgeInsets.symmetric(vertical: 15.0, horizontal: 10.0),
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(
+            color: Colors.red[700]!,
+          ),
+          borderRadius: BorderRadius.circular(15.0),
+        ),
+        enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: Colors.grey.withOpacity(0.3),
+            ),
+            borderRadius: BorderRadius.circular(15.0)),
+        border: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: Colors.grey.withOpacity(0.3),
+            ),
+            borderRadius: BorderRadius.circular(15.0))),
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+        backgroundColor: Colors.red[700], elevation: 1),
+    bottomAppBarColor: const Color(0xFFE5E5E5),
     accentTextTheme: TextTheme(
-      headline1: TextStyle(color: Colors.blue),
-      headline2: TextStyle(color: Color(0xFF000000)),
+      headline1: TextStyle(
+        color: Colors.red[700],
+      ),
     ),
-    bottomAppBarColor: Color(0xFFE6E6E6),
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      selectedIconTheme: IconThemeData(color: Colors.deepPurple),
+      selectedLabelStyle: TextStyle(color: Colors.deepPurple),
+      showSelectedLabels: false,
+      showUnselectedLabels: false,
+      backgroundColor: Color(0xFFE5E5E5),
+    ),
     bottomSheetTheme:
-    BottomSheetThemeData(modalBackgroundColor: Color(0xFFF5F5F5)));
+    const BottomSheetThemeData(modalBackgroundColor: Color(0xFFFFFFFF)));
 
-//ESCURO
 ThemeData dark = ThemeData(
     brightness: Brightness.dark,
-    primaryColor: Color(0xFF1E1E20),
-    accentColor: Color(0xFF7592CC),
-    scaffoldBackgroundColor: Color(0xFF1E1E20),
-    cardTheme: CardTheme(
-      color: Color(0xFF272729),
+    primaryColor: const Color(0xFF1E1E20),
+    accentColor: const Color(0xFFd95b52),
+    scaffoldBackgroundColor: const Color(0xFF1E1E20),
+    appBarTheme: const AppBarTheme(
+        color: Color(0xFF1E1E20),
+        elevation: 0,
+        titleTextStyle: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.w600,
+            color: Color(0xFFFFFFFF))),
+    cardTheme: const CardTheme(
+      color: Color(0xFF2A2A2C),
     ),
-    dialogTheme: DialogTheme(
-      backgroundColor: Color(0xFF2D2D2F),
+    dialogTheme: const DialogTheme(
+      backgroundColor: Color(0xFF1E1E20),
     ),
-    bottomAppBarColor: Color(0xFF151517),
-    accentTextTheme: TextTheme(
-      headline1: TextStyle(color: Color(0xFF95b3ed)),
-      headline2: TextStyle(color: Color(0xFF000000)),
+    inputDecorationTheme: InputDecorationTheme(
+        contentPadding:
+        const EdgeInsets.symmetric(vertical: 15.0, horizontal: 10.0),
+        focusedBorder: OutlineInputBorder(
+          borderSide: const BorderSide(
+            color: Color(0xFFFF965b),
+          ),
+          borderRadius: BorderRadius.circular(15.0),
+        ),
+        enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: Colors.grey.withOpacity(0.3),
+            ),
+            borderRadius: BorderRadius.circular(15.0)),
+        border: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: Colors.grey.withOpacity(0.3),
+            ),
+            borderRadius: BorderRadius.circular(15.0))),
+    accentTextTheme: const TextTheme(
+      headline1: TextStyle(
+        color: Color(0xFFd96252),
+      ),
     ),
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      selectedIconTheme: IconThemeData(color: Color(0xFFA590D5)),
+      selectedLabelStyle: TextStyle(color: Color(0xFFA590D5)),
+      showSelectedLabels: false,
+      showUnselectedLabels: false,
+      backgroundColor: Color(0xFF151517),
+    ),
+    floatingActionButtonTheme: const FloatingActionButtonThemeData(
+        backgroundColor: Color(0xFFFF965b), elevation: 1),
+    bottomAppBarColor: const Color(0xFFE0B84F),
     bottomSheetTheme:
-    BottomSheetThemeData(modalBackgroundColor: Color(0xFF151517)));
+    const BottomSheetThemeData(modalBackgroundColor: Color(0xFF1E1E20)));
 
 class ThemeNotifier extends ChangeNotifier {
   final String key = 'valorTema';
@@ -60,7 +133,7 @@ class ThemeNotifier extends ChangeNotifier {
   }
 
   _initPrefs() async {
-      prefs = await SharedPreferences.getInstance();
+    prefs = await SharedPreferences.getInstance();
   }
 
   _loadFromPrefs() async {

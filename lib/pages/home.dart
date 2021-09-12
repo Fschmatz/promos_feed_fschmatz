@@ -2,17 +2,24 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:promos_feed_fschmatz/classes/feed.dart';
-import 'package:promos_feed_fschmatz/configs/settingsPage.dart';
-import 'package:promos_feed_fschmatz/widgets/newsTile.dart';
+import 'package:promos_feed_fschmatz/configs/settings_page.dart';
+import 'package:promos_feed_fschmatz/widgets/news_tile.dart';
 import 'package:webfeed/webfeed.dart';
 
 class Home extends StatefulWidget {
+  const Home({Key? key}) : super(key: key);
+
   @override
   _HomeState createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
-  static const String feedUrl = 'http://feeds.feedburner.com/meiobit';
+
+  /*https://forum.adrenaline.com.br/forums/produtos-importados.245/index.rss
+  https://forum.adrenaline.com.br/forums/for-sale.221/index.rss
+  https://nitter.net/hardmob_promo/rss*/
+
+  static const String feedUrl = 'https://forum.adrenaline.com.br/forums/for-sale.221/index.rss';
   List<RssItem> _articlesList = [];
   bool _loading = true;
 
@@ -38,7 +45,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        title: Text('MeioBit'),
+        title: const Text('Promos Feed'),
         actions: [
           IconButton(
               icon: Icon(
@@ -53,14 +60,14 @@ class _HomeState extends State<Home> {
                 Navigator.push(
                     context,
                     MaterialPageRoute<void>(
-                      builder: (BuildContext context) => SettingsPage(),
+                      builder: (BuildContext context) => const SettingsPage(),
                       fullscreenDialog: true,
                     ));
               }),
         ],
       ),
       body: AnimatedSwitcher(
-        duration: Duration(milliseconds: 500),
+        duration: const Duration(milliseconds: 500),
         child: _loading
             ? Center(
                 child: CircularProgressIndicator(
@@ -71,13 +78,13 @@ class _HomeState extends State<Home> {
                 onRefresh: getRssData,
                 color: Theme.of(context).accentColor,
                 child: ListView(
-                    physics: AlwaysScrollableScrollPhysics(),
+                    physics: const AlwaysScrollableScrollPhysics(),
                     children: [
                       ListView.separated(
                         separatorBuilder: (context, index) {
                           return const Divider();
                         },
-                        physics: NeverScrollableScrollPhysics(),
+                        physics: const NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         itemCount: _articlesList.length,
                         itemBuilder: (context, index) {

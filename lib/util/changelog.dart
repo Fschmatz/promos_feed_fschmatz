@@ -1,7 +1,7 @@
 class Changelog{
 
   static String appVersion = "1.0.0";
-  static String appName = "MeioBit Feed Fschmatz";
+  static String appName = "Promos Feed Fschmatz";
 
   static String changelogCurrent = '''  
 1.0.0
@@ -9,8 +9,13 @@ class Changelog{
 ''';
 
   static String changelogsOld = '''
+0.4.0
+- Added HardMob Promo
+- Added For Sale
+- Added For Sale Importados
+
 0.3.0
-- Added PubDate
+- Added Dates
 
 0.2.0
 - UI Created

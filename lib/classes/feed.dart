@@ -9,7 +9,7 @@ class Feed {
   Feed({required this.title, required this.link, required this.data});
 
   get formattedDate{
-    return Jiffy(this.data).format("dd/MM/yyyy");
+    return Jiffy(data).format("dd/MM/yyyy");
   }
 
   @override
