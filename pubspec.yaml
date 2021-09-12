@@ -46,6 +46,7 @@ dev_dependencies:
   url_launcher:
   webfeed:
   jiffy:
+  google_nav_bar:
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

@@ -7,7 +7,7 @@ class AppInfoPage extends StatelessWidget {
 
 
   _launchGithub()  {
-    const url = '';
+    const url = 'https://github.com/Fschmatz/promos_feed_fschmatz';
     launch(url);
   }
 
@@ -93,7 +93,7 @@ class AppInfoPage extends StatelessWidget {
           const ListTile(
             leading: Icon(Icons.messenger_outline),
             title: Text(
-              "",
+              "Money unfortunately leads to Happiness & Sadness in today’s times",
               style: TextStyle(fontSize: 16),
             ),
           ),

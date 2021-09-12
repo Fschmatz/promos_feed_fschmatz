@@ -1,10 +1,7 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'package:promos_feed_fschmatz/classes/feed.dart';
 import 'package:promos_feed_fschmatz/configs/settings_page.dart';
-import 'package:promos_feed_fschmatz/widgets/news_tile.dart';
-import 'package:webfeed/webfeed.dart';
+import 'package:promos_feed_fschmatz/pages/promos_list.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -15,33 +12,30 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
 
-  /*https://forum.adrenaline.com.br/forums/produtos-importados.245/index.rss
-  https://forum.adrenaline.com.br/forums/for-sale.221/index.rss
-  https://nitter.net/hardmob_promo/rss*/
-
-  static const String feedUrl = 'https://forum.adrenaline.com.br/forums/for-sale.221/index.rss';
-  List<RssItem> _articlesList = [];
-  bool _loading = true;
-
-  @override
-  void initState() {
-    getRssData();
-    super.initState();
-  }
-
-  Future<void> getRssData() async {
-    var client = http.Client();
-    var response = await client.get(Uri.parse(feedUrl));
-    var channel = RssFeed.parse(response.body);
-    setState(() {
-      _articlesList = channel.items!.toList();
-      _loading = false;
-    });
-    client.close();
-  }
+  int _currentIndex = 0;
+  final List<Widget> _feedList = [
+    PromosList(
+      key: UniqueKey(),
+      urlFeed: 'https://nitter.net/hardmob_promo/rss',
+    ),
+    PromosList(
+      key: UniqueKey(),
+      urlFeed: 'https://forum.adrenaline.com.br/forums/for-sale.221/index.rss',
+    ),
+    PromosList(
+      key: UniqueKey(),
+      urlFeed:
+          'https://forum.adrenaline.com.br/forums/produtos-importados.245/index.rss',
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
+    TextStyle styleFontNavBar = TextStyle(
+        fontSize: 14.5,
+        fontWeight: FontWeight.w600,
+        color: Theme.of(context).accentColor);
+
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -66,41 +60,53 @@ class _HomeState extends State<Home> {
               }),
         ],
       ),
-      body: AnimatedSwitcher(
-        duration: const Duration(milliseconds: 500),
-        child: _loading
-            ? Center(
-                child: CircularProgressIndicator(
-                  color: Theme.of(context).accentColor,
+      body: SafeArea(child: _feedList[_currentIndex]),
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          color: Theme.of(context).bottomNavigationBarTheme.backgroundColor,
+        ),
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+            child: GNav(
+              rippleColor: Theme.of(context).accentColor.withOpacity(0.5),
+              hoverColor: Theme.of(context).accentColor.withOpacity(0.5),
+              gap: 2,
+              activeColor: Theme.of(context).accentColor,
+              tabBorderRadius: 10,
+              iconSize: 0,
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
+              duration: const Duration(milliseconds: 500),
+              tabBackgroundColor:
+              Theme.of(context).accentColor.withOpacity(0.3),
+              backgroundColor:
+                  Theme.of(context).bottomNavigationBarTheme.backgroundColor!,
+              tabs: [
+                GButton(
+                  icon: Icons.circle,
+                  leading: Text('   HardMob', style: styleFontNavBar),
+                  textStyle: styleFontNavBar,
                 ),
-              )
-            : RefreshIndicator(
-                onRefresh: getRssData,
-                color: Theme.of(context).accentColor,
-                child: ListView(
-                    physics: const AlwaysScrollableScrollPhysics(),
-                    children: [
-                      ListView.separated(
-                        separatorBuilder: (context, index) {
-                          return const Divider();
-                        },
-                        physics: const NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemCount: _articlesList.length,
-                        itemBuilder: (context, index) {
-                          return NewsTile(
-                            feed: Feed(
-                                data: _articlesList[index].pubDate.toString(),
-                                title: _articlesList[index].title!,
-                                link: _articlesList[index].link!),
-                          );
-                        },
-                      ),
-                      const SizedBox(
-                        height: 30,
-                      )
-                    ]),
-              ),
+                GButton(
+                  icon: Icons.circle,
+                  leading: Text('   For Sale', style: styleFontNavBar),
+                  textStyle: styleFontNavBar,
+                ),
+                GButton(
+                  icon: Icons.circle,
+                  leading: Text('   Importados', style: styleFontNavBar),
+                  textStyle: styleFontNavBar,
+                ),
+              ],
+              selectedIndex: _currentIndex,
+              onTabChange: (index) {
+                setState(() {
+                  _currentIndex = index;
+                });
+              },
+            ),
+          ),
+        ),
       ),
     );
   }

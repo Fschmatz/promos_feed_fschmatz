@@ -3,16 +3,16 @@ import 'package:promos_feed_fschmatz/classes/feed.dart';
 import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class NewsTile extends StatefulWidget {
+class PromoTile extends StatefulWidget {
   @override
-  _NewsTileState createState() => _NewsTileState();
+  _PromoTileState createState() => _PromoTileState();
 
   Feed feed;
 
-  NewsTile({Key? key, required this.feed}) : super(key: key);
+  PromoTile({Key? key, required this.feed}) : super(key: key);
 }
 
-class _NewsTileState extends State<NewsTile> {
+class _PromoTileState extends State<PromoTile> {
   //URL LAUNCHER
   _launchBrowser(String url) async {
     if (await canLaunch(url)) {
