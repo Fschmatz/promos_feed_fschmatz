@@ -31,17 +31,11 @@ class _PromoTileState extends State<PromoTile> {
       child: Padding(
         padding: const EdgeInsets.fromLTRB(16, 10, 16, 6),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Flexible(
-                  child: Text(
-                    widget.feed.title,
-                    style: const TextStyle(fontSize: 16),
-                  ),
-                ),
-              ],
+            Text(
+              widget.feed.title,
+              style: const TextStyle(fontSize: 16),
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
