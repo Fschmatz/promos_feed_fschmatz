@@ -34,7 +34,11 @@ class _HomeState extends State<Home> {
     TextStyle styleFontNavBar = TextStyle(
         fontSize: 14.5,
         fontWeight: FontWeight.w600,
-        color: Theme.of(context).accentColor);
+        color: Theme.of(context)
+            .textTheme
+            .headline6!
+            .color!
+            .withOpacity(0.8));
 
     return Scaffold(
       appBar: AppBar(
@@ -48,7 +52,7 @@ class _HomeState extends State<Home> {
                     .textTheme
                     .headline6!
                     .color!
-                    .withOpacity(0.7),
+                    .withOpacity(0.8),
               ),
               onPressed: () {
                 Navigator.push(
@@ -67,7 +71,7 @@ class _HomeState extends State<Home> {
         ),
         child: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 10),
             child: GNav(
               rippleColor: Theme.of(context).accentColor.withOpacity(0.5),
               hoverColor: Theme.of(context).accentColor.withOpacity(0.5),
@@ -75,10 +79,10 @@ class _HomeState extends State<Home> {
               activeColor: Theme.of(context).accentColor,
               tabBorderRadius: 10,
               iconSize: 0,
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
               duration: const Duration(milliseconds: 500),
               tabBackgroundColor:
-              Theme.of(context).accentColor.withOpacity(0.3),
+              Theme.of(context).accentColor.withOpacity(0.4),
               backgroundColor:
                   Theme.of(context).bottomNavigationBarTheme.backgroundColor!,
               tabs: [

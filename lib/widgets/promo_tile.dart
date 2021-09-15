@@ -13,6 +13,19 @@ class PromoTile extends StatefulWidget {
 }
 
 class _PromoTileState extends State<PromoTile> {
+
+ String promoTitle = '';
+
+  @override
+  void initState() {
+    promoTitle = widget.feed.title;
+    if (promoTitle.contains('hardmob')){
+      List formatString = promoTitle.split("https://");
+      promoTitle = formatString[0];
+    }
+    super.initState();
+  }
+
   //URL LAUNCHER
   _launchBrowser(String url) async {
     if (await canLaunch(url)) {
@@ -33,10 +46,10 @@ class _PromoTileState extends State<PromoTile> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              widget.feed.title,
-              style: const TextStyle(fontSize: 16),
-            ),
+              Text(
+                promoTitle,
+                style: const TextStyle(fontSize: 16),
+              ),
             Padding(
               padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
               child: Row(
@@ -49,8 +62,10 @@ class _PromoTileState extends State<PromoTile> {
                       style: TextStyle(
                           fontSize: 12.5,
                           fontWeight: FontWeight.w600,
-                          color:
-                              Theme.of(context).accentTextTheme.headline1!.color),
+                          color: Theme.of(context)
+                              .accentTextTheme
+                              .headline1!
+                              .color),
                     ),
                   ),
                   SizedBox(
