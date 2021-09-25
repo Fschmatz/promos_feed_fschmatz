@@ -11,7 +11,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
   int _currentIndex = 0;
   final List<Widget> _feedList = [
     PromosList(
@@ -29,16 +28,23 @@ class _HomeState extends State<Home> {
     ),
   ];
 
+  TextStyle returnColor(int index) {
+    if (_currentIndex != index) {
+      return TextStyle(
+          fontSize: 14.5,
+          fontWeight: FontWeight.w600,
+          color:
+              Theme.of(context).textTheme.headline6!.color!.withOpacity(0.8));
+    } else {
+      return TextStyle(
+          fontSize: 14.5,
+          fontWeight: FontWeight.w600,
+          color: Theme.of(context).accentColor.withOpacity(0.9));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    TextStyle styleFontNavBar = TextStyle(
-        fontSize: 14.5,
-        fontWeight: FontWeight.w600,
-        color: Theme.of(context)
-            .textTheme
-            .headline6!
-            .color!
-            .withOpacity(0.8));
 
     return Scaffold(
       appBar: AppBar(
@@ -82,24 +88,24 @@ class _HomeState extends State<Home> {
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
               duration: const Duration(milliseconds: 500),
               tabBackgroundColor:
-              Theme.of(context).accentColor.withOpacity(0.4),
+                  Theme.of(context).accentColor.withOpacity(0.4),
               backgroundColor:
                   Theme.of(context).bottomNavigationBarTheme.backgroundColor!,
               tabs: [
                 GButton(
                   icon: Icons.circle,
-                  leading: Text('   HardMob', style: styleFontNavBar),
-                  textStyle: styleFontNavBar,
+                  leading: Text('   HardMob',
+                      style: returnColor(0)),
                 ),
                 GButton(
                   icon: Icons.circle,
-                  leading: Text('   For Sale', style: styleFontNavBar),
-                  textStyle: styleFontNavBar,
+                  leading: Text('   For Sale',
+                      style: returnColor(1)),
                 ),
                 GButton(
                   icon: Icons.circle,
-                  leading: Text('   Importados', style: styleFontNavBar),
-                  textStyle: styleFontNavBar,
+                  leading: Text('   Importados',
+                      style: returnColor(2)),
                 ),
               ],
               selectedIndex: _currentIndex,
