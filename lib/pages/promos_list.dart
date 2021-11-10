@@ -16,10 +16,6 @@ class PromosList extends StatefulWidget {
 
 class _PromosListState extends State<PromosList> {
 
-  /*https://forum.adrenaline.com.br/forums/produtos-importados.245/index.rss
-  https://forum.adrenaline.com.br/forums/for-sale.221/index.rss
-  https://nitter.net/hardmob_promo/rss*/
-
   static String feedUrl = '';
   List<RssItem> _articlesList = [];
   bool _loading = true;
@@ -33,7 +29,23 @@ class _PromosListState extends State<PromosList> {
 
   Future<void> getRssData() async {
     var client = http.Client();
-    var response = await client.get(Uri.parse(feedUrl));
+    var response = await client.get(Uri.parse(feedUrl)).timeout(
+      const Duration(seconds: 15),
+      onTimeout: () {
+        throw ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          behavior: SnackBarBehavior.floating,
+          content: const Text('Loading Error'),
+          duration: const Duration(seconds: 10),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          action: SnackBarAction(
+            label: 'RETRY',
+            onPressed: getRssData,
+          ),
+        ));
+      },
+    );;
     var channel = RssFeed.parse(response.body);
     setState(() {
       _articlesList = channel.items!.toList();
@@ -59,10 +71,7 @@ class _PromosListState extends State<PromosList> {
                 child: ListView(
                     physics: const AlwaysScrollableScrollPhysics(),
                     children: [
-                      ListView.separated(
-                        separatorBuilder: (context, index) {
-                          return const Divider();
-                        },
+                      ListView.builder(
                         physics: const NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         itemCount: _articlesList.length,

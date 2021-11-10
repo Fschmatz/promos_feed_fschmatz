@@ -1,14 +1,19 @@
 class Changelog{
 
-  static String appVersion = "1.0.2";
+  static String appVersion = "1.1.0";
   static String appName = "Promos Feed Fschmatz";
 
   static String changelogCurrent = '''  
-1.0.2
-- Technically Usable
+1.1.0
+- TimeOut
+- Bug Fixes
+- Color Changes
 ''';
 
   static String changelogsOld = '''
+1.0.0
+- Technically Usable
+
 0.4.0
 - Added HardMob Promo
 - Added For Sale

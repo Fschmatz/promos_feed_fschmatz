@@ -15,7 +15,8 @@ class _HomeState extends State<Home> {
   final List<Widget> _feedList = [
     PromosList(
       key: UniqueKey(),
-      urlFeed: 'https://nitter.net/hardmob_promo/rss',
+      //urlFeed: 'https://nitter.net/hardmob_promo/rss', ANTIGO
+      urlFeed: 'https://tools.verifiedjoseph.com/rss-bridge/?action=display&bridge=Twitter&context=By+username&u=hardmob_promo&norep=on&noretweet=on&nopinned=on&nopic=on&noimg=on&noimgscaling=on&format=Mrss',
     ),
     PromosList(
       key: UniqueKey(),
@@ -39,7 +40,7 @@ class _HomeState extends State<Home> {
       return TextStyle(
           fontSize: 14.5,
           fontWeight: FontWeight.w600,
-          color: Theme.of(context).accentColor.withOpacity(0.9));
+          color: Theme.of(context).accentColor);
     }
   }
 
@@ -52,13 +53,8 @@ class _HomeState extends State<Home> {
         title: const Text('Promos Feed'),
         actions: [
           IconButton(
-              icon: Icon(
+              icon: const Icon(
                 Icons.settings_outlined,
-                color: Theme.of(context)
-                    .textTheme
-                    .headline6!
-                    .color!
-                    .withOpacity(0.8),
               ),
               onPressed: () {
                 Navigator.push(
@@ -77,13 +73,13 @@ class _HomeState extends State<Home> {
         ),
         child: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
             child: GNav(
               rippleColor: Theme.of(context).accentColor.withOpacity(0.5),
               hoverColor: Theme.of(context).accentColor.withOpacity(0.5),
               gap: 2,
               activeColor: Theme.of(context).accentColor,
-              tabBorderRadius: 10,
+              tabBorderRadius: 12,
               iconSize: 0,
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
               duration: const Duration(milliseconds: 500),

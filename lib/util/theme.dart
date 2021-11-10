@@ -10,7 +10,7 @@ ThemeData light = ThemeData(
         color: Color(0xFFFFFFFF),
         elevation: 0,
         iconTheme: IconThemeData(
-            color: Color(0xFF000000)
+            color: Color(0xFF151515)
         ),
         titleTextStyle: TextStyle(
             fontSize: 20,
@@ -19,30 +19,9 @@ ThemeData light = ThemeData(
     cardTheme: const CardTheme(
       color: Color(0xFFF3F3F3),
     ),
-    dialogTheme: const DialogTheme(
-      backgroundColor: Color(0xFFFFFFFF),
-    ),
-    inputDecorationTheme: InputDecorationTheme(
-        contentPadding:
-        const EdgeInsets.symmetric(vertical: 15.0, horizontal: 10.0),
-        focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(
-            color: Colors.red[700]!,
-          ),
-          borderRadius: BorderRadius.circular(15.0),
-        ),
-        enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-              color: Colors.grey.withOpacity(0.3),
-            ),
-            borderRadius: BorderRadius.circular(15.0)),
-        border: OutlineInputBorder(
-            borderSide: BorderSide(
-              color: Colors.grey.withOpacity(0.3),
-            ),
-            borderRadius: BorderRadius.circular(15.0))),
     floatingActionButtonTheme: FloatingActionButtonThemeData(
-        backgroundColor: Colors.red[700], elevation: 1),
+        backgroundColor: Colors.red[700]
+    ),
     bottomAppBarColor: const Color(0xFFE5E5E5),
     accentTextTheme: TextTheme(
       headline1: TextStyle(
@@ -56,46 +35,30 @@ ThemeData light = ThemeData(
       showUnselectedLabels: false,
       backgroundColor: Color(0xFFE5E5E5),
     ),
+    snackBarTheme: const SnackBarThemeData(
+      actionTextColor: Color(0xFFd95b52),
+    ),
     bottomSheetTheme:
     const BottomSheetThemeData(modalBackgroundColor: Color(0xFFFFFFFF)));
 
 ThemeData dark = ThemeData(
     brightness: Brightness.dark,
-    primaryColor: const Color(0xFF202022),
+    primaryColor: const Color(0xFF202124),
     accentColor: const Color(0xFFd95b52),
-    scaffoldBackgroundColor: const Color(0xFF202022),
+    scaffoldBackgroundColor: const Color(0xFF202124),
     appBarTheme: const AppBarTheme(
-        color: Color(0xFF202022),
+        color: Color(0xFF202124),
         elevation: 0,
+        iconTheme: IconThemeData(
+            color: Color(0xFFF0F0F0)
+        ),
         titleTextStyle: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.w600,
             color: Color(0xFFFFFFFF))),
     cardTheme: const CardTheme(
-      color: Color(0xFF2A2A2C),
+      color: Color(0xFF303134),
     ),
-    dialogTheme: const DialogTheme(
-      backgroundColor: Color(0xFF202022),
-    ),
-    inputDecorationTheme: InputDecorationTheme(
-        contentPadding:
-        const EdgeInsets.symmetric(vertical: 15.0, horizontal: 10.0),
-        focusedBorder: OutlineInputBorder(
-          borderSide: const BorderSide(
-            color: Color(0xFFFF965b),
-          ),
-          borderRadius: BorderRadius.circular(15.0),
-        ),
-        enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-              color: Colors.grey.withOpacity(0.3),
-            ),
-            borderRadius: BorderRadius.circular(15.0)),
-        border: OutlineInputBorder(
-            borderSide: BorderSide(
-              color: Colors.grey.withOpacity(0.3),
-            ),
-            borderRadius: BorderRadius.circular(15.0))),
     accentTextTheme: const TextTheme(
       headline1: TextStyle(
         color: Color(0xFFd96252),
@@ -106,13 +69,18 @@ ThemeData dark = ThemeData(
       selectedLabelStyle: TextStyle(color: Color(0xFFA590D5)),
       showSelectedLabels: false,
       showUnselectedLabels: false,
-      backgroundColor: Color(0xFF151517),
+      backgroundColor: Color(0xFF141518),
     ),
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
-        backgroundColor: Color(0xFFFF965b), elevation: 1),
-    bottomAppBarColor: const Color(0xFFE0B84F),
+        backgroundColor: Color(0xFFFF965b)
+    ),
+    bottomAppBarColor: const Color(0xFF141518),
+    snackBarTheme: SnackBarThemeData(
+      backgroundColor: const Color(0xFFF0F0F0),
+      actionTextColor: Colors.red[700],
+    ),
     bottomSheetTheme:
-    const BottomSheetThemeData(modalBackgroundColor: Color(0xFF202022)));
+    const BottomSheetThemeData(modalBackgroundColor: Color(0xFF202124)));
 
 class ThemeNotifier extends ChangeNotifier {
   final String key = 'valorTema';
