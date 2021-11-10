@@ -71,7 +71,8 @@ class _PromosListState extends State<PromosList> {
                 child: ListView(
                     physics: const AlwaysScrollableScrollPhysics(),
                     children: [
-                      ListView.builder(
+                      ListView.separated(
+                        separatorBuilder: (BuildContext context, int index) => const SizedBox(height: 16,),
                         physics: const NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         itemCount: _articlesList.length,
