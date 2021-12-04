@@ -76,7 +76,7 @@ class _PromoTileState extends State<PromoTile> {
                       },
                       child: Icon(
                         Icons.share_outlined,
-                        size: 17.0,
+                        size: 18.0,
                         color: Theme.of(context)
                             .textTheme
                             .headline6!

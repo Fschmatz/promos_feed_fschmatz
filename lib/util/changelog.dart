@@ -1,13 +1,14 @@
 class Changelog{
 
-  static String appVersion = "1.1.0";
+  static String appVersion = "1.1.1";
   static String appName = "Promos Feed Fschmatz";
 
   static String changelogCurrent = '''  
-1.1.0
+1.1.1
 - TimeOut
 - Bug Fixes
 - Color Changes
+- Changed RSS Provider
 ''';
 
   static String changelogsOld = '''

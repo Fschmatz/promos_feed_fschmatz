@@ -16,7 +16,8 @@ class _HomeState extends State<Home> {
     PromosList(
       key: UniqueKey(),
       //urlFeed: 'https://nitter.net/hardmob_promo/rss', ANTIGO
-      urlFeed: 'https://tools.verifiedjoseph.com/rss-bridge/?action=display&bridge=Twitter&context=By+username&u=hardmob_promo&norep=on&noretweet=on&nopinned=on&nopic=on&noimg=on&noimgscaling=on&format=Mrss',
+      urlFeed:
+          'https://bridge.noisebridge.info/?action=display&bridge=Twitter&context=By+username&u=hardmob_promo&norep=on&noretweet=on&nopinned=on&nopic=on&noimg=on&noimgscaling=on&format=Mrss',
     ),
     PromosList(
       key: UniqueKey(),
@@ -46,7 +47,6 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -79,7 +79,7 @@ class _HomeState extends State<Home> {
               hoverColor: Theme.of(context).accentColor.withOpacity(0.5),
               gap: 2,
               activeColor: Theme.of(context).accentColor,
-              tabBorderRadius: 12,
+              tabBorderRadius: 16,
               iconSize: 0,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
@@ -91,18 +91,15 @@ class _HomeState extends State<Home> {
               tabs: [
                 GButton(
                   icon: Icons.circle,
-                  leading: Text('   HardMob',
-                      style: returnColor(0)),
+                  leading: Text('   HardMob', style: returnColor(0)),
                 ),
                 GButton(
                   icon: Icons.circle,
-                  leading: Text('   For Sale',
-                      style: returnColor(1)),
+                  leading: Text('   For Sale', style: returnColor(1)),
                 ),
                 GButton(
                   icon: Icons.circle,
-                  leading: Text('   Importados',
-                      style: returnColor(2)),
+                  leading: Text('   Importados', style: returnColor(2)),
                 ),
               ],
               selectedIndex: _currentIndex,
