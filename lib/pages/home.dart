@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:promos_feed_fschmatz/configs/settings_page.dart';
 import 'package:promos_feed_fschmatz/pages/promos_list.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -48,72 +46,42 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        title: const Text('Promos Feed'),
-        actions: [
-          IconButton(
-              icon: const Icon(
-                Icons.settings_outlined,
-              ),
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute<void>(
-                      builder: (BuildContext context) => const SettingsPage(),
-                      fullscreenDialog: true,
-                    ));
-              }),
+      body: _feedList[_currentIndex],
+      bottomNavigationBar: NavigationBar(
+        selectedIndex: _currentIndex,
+        onDestinationSelected: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
+        destinations: const [
+          NavigationDestination(
+            icon: Icon(Icons.shopping_bag_outlined),
+            selectedIcon: Icon(
+              Icons.shopping_bag,
+              color: Colors.black87,
+            ),
+            label: 'HardMob',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.local_offer_outlined),
+            selectedIcon: Icon(
+              Icons.local_offer,
+              color: Colors.black87,
+            ),
+            label: 'For Sale',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.public_outlined),
+            selectedIcon: Icon(
+              Icons.public,
+              color: Colors.black87,
+            ),
+            label: 'Importados',
+          ),
         ],
       ),
-      body: SafeArea(child: _feedList[_currentIndex]),
-      bottomNavigationBar: Container(
-        decoration: BoxDecoration(
-          color: Theme.of(context).bottomNavigationBarTheme.backgroundColor,
-        ),
-        child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
-            child: GNav(
-              rippleColor: Theme.of(context).accentColor.withOpacity(0.5),
-              hoverColor: Theme.of(context).accentColor.withOpacity(0.5),
-              gap: 2,
-              activeColor: Theme.of(context).accentColor,
-              tabBorderRadius: 16,
-              iconSize: 0,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
-              duration: const Duration(milliseconds: 500),
-              tabBackgroundColor:
-                  Theme.of(context).accentColor.withOpacity(0.4),
-              backgroundColor:
-                  Theme.of(context).bottomNavigationBarTheme.backgroundColor!,
-              tabs: [
-                GButton(
-                  icon: Icons.circle,
-                  leading: Text('   HardMob', style: returnColor(0)),
-                ),
-                GButton(
-                  icon: Icons.circle,
-                  leading: Text('   For Sale', style: returnColor(1)),
-                ),
-                GButton(
-                  icon: Icons.circle,
-                  leading: Text('   Importados', style: returnColor(2)),
-                ),
-              ],
-              selectedIndex: _currentIndex,
-              onTabChange: (index) {
-                setState(() {
-                  _currentIndex = index;
-                });
-              },
-            ),
-          ),
-        ),
-      ),
+
     );
   }
 }
-
-//_articlesList[index].pubDate!.day.toString()

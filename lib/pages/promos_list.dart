@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:promos_feed_fschmatz/classes/feed.dart';
+import 'package:promos_feed_fschmatz/configs/settings_page.dart';
 import 'package:promos_feed_fschmatz/widgets/promo_tile.dart';
 import 'package:webfeed/webfeed.dart';
 
@@ -57,42 +58,66 @@ class _PromosListState extends State<PromosList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: AnimatedSwitcher(
-        duration: const Duration(milliseconds: 500),
-        child: _loading
-            ? Center(
-                child: CircularProgressIndicator(
+      body: NestedScrollView(
+        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+          return <Widget>[
+            SliverAppBar(
+              title: const Text('Promos Feed'),
+              pinned: false,
+              floating: true,
+              snap: true,
+              actions: [
+                IconButton(
+                    icon: const Icon(
+                      Icons.settings_outlined,
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute<void>(
+                            builder: (BuildContext context) => const SettingsPage(),
+                            fullscreenDialog: true,
+                          ));
+                    }),
+              ],
+            ),
+          ];
+        },
+        body: AnimatedSwitcher(
+          duration: const Duration(milliseconds: 500),
+          child: _loading
+              ? Center(
+                  child: CircularProgressIndicator(
+                    color: Theme.of(context).accentColor,
+                  ),
+                )
+              : RefreshIndicator(
+                  onRefresh: getRssData,
                   color: Theme.of(context).accentColor,
+                  child: ListView(
+                      physics: const AlwaysScrollableScrollPhysics(),
+                      children: [
+                        ListView.separated(
+                          separatorBuilder: (BuildContext context, int index) => const SizedBox(height: 16,),
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: _articlesList.length,
+                          itemBuilder: (context, index) {
+                            return PromoTile(
+                              feed: Feed(
+                                  data: _articlesList[index].pubDate.toString(),
+                                  title: _articlesList[index].title!,
+                                  link: _articlesList[index].link!),
+                            );
+                          },
+                        ),
+                        const SizedBox(
+                          height: 30,
+                        )
+                      ]),
                 ),
-              )
-            : RefreshIndicator(
-                onRefresh: getRssData,
-                color: Theme.of(context).accentColor,
-                child: ListView(
-                    physics: const AlwaysScrollableScrollPhysics(),
-                    children: [
-                      ListView.separated(
-                        separatorBuilder: (BuildContext context, int index) => const SizedBox(height: 16,),
-                        physics: const NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemCount: _articlesList.length,
-                        itemBuilder: (context, index) {
-                          return PromoTile(
-                            feed: Feed(
-                                data: _articlesList[index].pubDate.toString(),
-                                title: _articlesList[index].title!,
-                                link: _articlesList[index].link!),
-                          );
-                        },
-                      ),
-                      const SizedBox(
-                        height: 30,
-                      )
-                    ]),
-              ),
+        ),
       ),
     );
   }
 }
-
-//_articlesList[index].pubDate!.day.toString()

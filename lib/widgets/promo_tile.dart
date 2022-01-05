@@ -88,7 +88,7 @@ class _PromoTileState extends State<PromoTile> {
                         primary: Theme.of(context).cardTheme.color,
                         onPrimary: Theme.of(context).accentColor,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50.0),
+                          borderRadius: BorderRadius.circular(12.0),
                         ),
                       ),
                     ),
