@@ -7,18 +7,17 @@ import 'package:promos_feed_fschmatz/widgets/promo_tile.dart';
 import 'package:webfeed/webfeed.dart';
 
 class PromosList extends StatefulWidget {
-
   String urlFeed;
-  PromosList({Key? key,required this.urlFeed}) : super(key: key);
+
+  PromosList({Key? key, required this.urlFeed}) : super(key: key);
 
   @override
   _PromosListState createState() => _PromosListState();
 }
 
 class _PromosListState extends State<PromosList> {
-
   static String feedUrl = '';
-  List<RssItem> _articlesList = [];
+  List<RssItem>? _articlesList = [];
   bool _loading = true;
 
   @override
@@ -46,7 +45,8 @@ class _PromosListState extends State<PromosList> {
           ),
         ));
       },
-    );;
+    );
+    ;
     var channel = RssFeed.parse(response.body);
     setState(() {
       _articlesList = channel.items!.toList();
@@ -75,7 +75,8 @@ class _PromosListState extends State<PromosList> {
                       Navigator.push(
                           context,
                           MaterialPageRoute<void>(
-                            builder: (BuildContext context) => const SettingsPage(),
+                            builder: (BuildContext context) =>
+                                const SettingsPage(),
                             fullscreenDialog: true,
                           ));
                     }),
@@ -94,27 +95,53 @@ class _PromosListState extends State<PromosList> {
               : RefreshIndicator(
                   onRefresh: getRssData,
                   color: Theme.of(context).accentColor,
-                  child: ListView(
-                      physics: const AlwaysScrollableScrollPhysics(),
-                      children: [
-                        ListView.separated(
-                          separatorBuilder: (BuildContext context, int index) => const SizedBox(height: 16,),
-                          physics: const NeverScrollableScrollPhysics(),
-                          shrinkWrap: true,
-                          itemCount: _articlesList.length,
-                          itemBuilder: (context, index) {
-                            return PromoTile(
-                              feed: Feed(
-                                  data: _articlesList[index].pubDate.toString(),
-                                  title: _articlesList[index].title!,
-                                  link: _articlesList[index].link!),
-                            );
-                          },
-                        ),
-                        const SizedBox(
-                          height: 30,
+                  child: _articlesList!.length == 1
+                      ? Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: const [
+                              Icon(
+                                Icons.error_outline,
+                                size: 28,
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              Text(
+                                "Feed Offline",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(fontSize: 20),
+                              ),
+                            ],
+                          ),
                         )
-                      ]),
+                      : ListView(
+                          physics: const AlwaysScrollableScrollPhysics(),
+                          children: [
+                              ListView.separated(
+                                separatorBuilder:
+                                    (BuildContext context, int index) =>
+                                        const SizedBox(
+                                  height: 16,
+                                ),
+                                physics: const NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                itemCount: _articlesList!.length,
+                                itemBuilder: (context, index) {
+                                  return PromoTile(
+                                    feed: Feed(
+                                        data: _articlesList![index]
+                                            .pubDate!
+                                            .toString(),
+                                        title: _articlesList![index].title!,
+                                        link: _articlesList![index].link),
+                                  );
+                                },
+                              ),
+                              const SizedBox(
+                                height: 30,
+                              )
+                            ]),
                 ),
         ),
       ),
