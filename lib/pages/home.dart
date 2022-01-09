@@ -13,9 +13,10 @@ class _HomeState extends State<Home> {
   final List<Widget> _feedList = [
     PromosList(
       key: UniqueKey(),
-      //urlFeed: 'https://nitter.net/hardmob_promo/rss', ANTIGO
-      urlFeed:
-          'https://bridge.noisebridge.info/?action=display&bridge=Twitter&context=By+username&u=hardmob_promo&norep=on&noretweet=on&nopinned=on&nopic=on&noimg=on&noimgscaling=on&format=Mrss',
+      urlFeed: 'https://nitter.net/hardmob_promo/rss',
+     //Retornando erro
+     /* urlFeed:
+          'https://bridge.noisebridge.info/?action=display&bridge=Twitter&context=By+username&u=hardmob_promo&norep=on&noretweet=on&nopinned=on&nopic=on&noimg=on&noimgscaling=on&format=Mrss',*/
     ),
     PromosList(
       key: UniqueKey(),
@@ -81,7 +82,6 @@ class _HomeState extends State<Home> {
           ),
         ],
       ),
-
     );
   }
 }

@@ -5,6 +5,7 @@ import 'package:promos_feed_fschmatz/classes/feed.dart';
 import 'package:promos_feed_fschmatz/configs/settings_page.dart';
 import 'package:promos_feed_fschmatz/widgets/promo_tile.dart';
 import 'package:webfeed/webfeed.dart';
+import 'package:jiffy/jiffy.dart';
 
 class PromosList extends StatefulWidget {
   String urlFeed;
@@ -17,7 +18,7 @@ class PromosList extends StatefulWidget {
 
 class _PromosListState extends State<PromosList> {
   static String feedUrl = '';
-  List<RssItem>? _articlesList = [];
+  List<RssItem>? _feedList = [];
   bool _loading = true;
 
   @override
@@ -46,13 +47,19 @@ class _PromosListState extends State<PromosList> {
         ));
       },
     );
-    ;
+
     var channel = RssFeed.parse(response.body);
     setState(() {
-      _articlesList = channel.items!.toList();
+      _feedList = channel.items!.toList();
       _loading = false;
     });
     client.close();
+  }
+
+  bool dataDiferente(int index) {
+    return Jiffy(_feedList![index == 0 ? index : index - 1].pubDate!)
+            .format("dd/MM/yyyy") !=
+        Jiffy(_feedList![index].pubDate!).format("dd/MM/yyyy");
   }
 
   @override
@@ -95,7 +102,7 @@ class _PromosListState extends State<PromosList> {
               : RefreshIndicator(
                   onRefresh: getRssData,
                   color: Theme.of(context).accentColor,
-                  child: _articlesList!.length == 1
+                  child: _feedList!.length == 1
                       ? Center(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -126,16 +133,30 @@ class _PromosListState extends State<PromosList> {
                                 ),
                                 physics: const NeverScrollableScrollPhysics(),
                                 shrinkWrap: true,
-                                itemCount: _articlesList!.length,
+                                itemCount: _feedList!.length,
                                 itemBuilder: (context, index) {
-                                  return PromoTile(
-                                    feed: Feed(
-                                        data: _articlesList![index]
-                                            .pubDate!
-                                            .toString(),
-                                        title: _articlesList![index].title!,
-                                        link: _articlesList![index].link),
-                                  );
+                                  return Column(children: [
+                                    Visibility(
+                                        visible: index == 0,
+                                        child: dataTile(
+                                            _feedList![index].pubDate!,
+                                            context,
+                                            index)),
+                                    Visibility(
+                                        visible: dataDiferente(index),
+                                        child: dataTile(
+                                            _feedList![index].pubDate!,
+                                            context,
+                                            index)),
+                                    PromoTile(
+                                      feed: Feed(
+                                          data: _feedList![index]
+                                              .pubDate!
+                                              .toString(),
+                                          title: _feedList![index].title!,
+                                          link: _feedList![index].link),
+                                    ),
+                                  ]);
                                 },
                               ),
                               const SizedBox(
@@ -147,4 +168,26 @@ class _PromosListState extends State<PromosList> {
       ),
     );
   }
+}
+
+Widget dataTile(DateTime data, BuildContext context, int index) {
+  Color corDataTile = Theme.of(context).accentColor.withOpacity(0.9);
+
+  return Column(
+    children: [
+      Visibility(visible: index != 0, child: const Divider()),
+      ListTile(
+        leading: Icon(
+          Icons.calendar_today_outlined,
+          color: corDataTile,
+          size: 22,
+        ),
+        title: Text(
+          Jiffy(data).format("dd/MM/yyyy"),
+          style: TextStyle(
+              fontSize: 14, fontWeight: FontWeight.w700, color: corDataTile),
+        ),
+      ),
+    ],
+  );
 }

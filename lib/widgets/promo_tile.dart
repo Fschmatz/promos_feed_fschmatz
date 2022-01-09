@@ -37,66 +37,38 @@ class _PromoTileState extends State<PromoTile> {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return ListTile(
+      contentPadding: const EdgeInsets.fromLTRB(16, 7, 16, 7),
       onTap: () {
         _launchBrowser(widget.feed!.link!);
       },
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(16, 10, 16, 6),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-              Text(
-                promoTitle,
-                style: const TextStyle(fontSize: 16),
-              ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 4, 0, 0),
-                    child: Text(
-                      widget.feed!.formattedDate,
-                      style: TextStyle(
-                          fontSize: 12.5,
-                          fontWeight: FontWeight.w600,
-                          color: Theme.of(context)
-                              .accentTextTheme
-                              .headline1!
-                              .color),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 55,
-                    child: TextButton(
-                      onPressed: () {
-                        Share.share(widget.feed!.link!);
-                      },
-                      child: Icon(
-                        Icons.share_outlined,
-                        size: 18.0,
-                        color: Theme.of(context)
-                            .textTheme
-                            .headline6!
-                            .color!
-                            .withOpacity(0.7),
-                      ),
-                      style: ElevatedButton.styleFrom(
-                        elevation: 0,
-                        primary: Theme.of(context).cardTheme.color,
-                        onPrimary: Theme.of(context).accentColor,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12.0),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+      title: Text(
+        promoTitle,
+        style: const TextStyle(fontSize: 16),
+      ),
+      trailing: SizedBox(
+        width: 55,
+        child: TextButton(
+          onPressed: () {
+            Share.share(widget.feed!.link!);
+          },
+          child: Icon(
+            Icons.share_outlined,
+            size: 19.0,
+            color: Theme.of(context)
+                .textTheme
+                .headline6!
+                .color!
+                .withOpacity(0.7),
+          ),
+          style: ElevatedButton.styleFrom(
+            elevation: 0,
+            primary: Theme.of(context).cardTheme.color,
+            onPrimary: Theme.of(context).accentColor,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12.0),
             ),
-          ],
+          ),
         ),
       ),
     );
