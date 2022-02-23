@@ -1,11 +1,12 @@
 class Changelog{
 
-  static String appVersion = "1.2.1";
+  static String appVersion = "1.2.2";
   static String appName = "Promos Feed Fschmatz";
 
   static String changelogCurrent = '''  
-1.2.1
+1.2.2
 - Bug Fixes
+- Added System Theme
 - Material 3 NavBar
 - Hide AppBar
 ''';

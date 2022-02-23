@@ -96,12 +96,12 @@ class _PromosListState extends State<PromosList> {
           child: _loading
               ? Center(
                   child: CircularProgressIndicator(
-                    color: Theme.of(context).accentColor,
+                    color: Theme.of(context).colorScheme.primary,
                   ),
                 )
               : RefreshIndicator(
                   onRefresh: getRssData,
-                  color: Theme.of(context).accentColor,
+                  color: Theme.of(context).colorScheme.primary,
                   child: _feedList!.length == 1
                       ? Center(
                           child: Column(
@@ -171,7 +171,7 @@ class _PromosListState extends State<PromosList> {
 }
 
 Widget dataTile(DateTime data, BuildContext context, int index) {
-  Color corDataTile = Theme.of(context).accentColor.withOpacity(0.9);
+  Color corDataTile = Theme.of(context).colorScheme.primary.withOpacity(0.9);
 
   return Column(
     children: [

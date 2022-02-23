@@ -64,7 +64,7 @@ class _PromoTileState extends State<PromoTile> {
           style: ElevatedButton.styleFrom(
             elevation: 0,
             primary: Theme.of(context).cardTheme.color,
-            onPrimary: Theme.of(context).accentColor,
+            onPrimary: Theme.of(context).colorScheme.primary,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12.0),
             ),

@@ -29,21 +29,6 @@ class _HomeState extends State<Home> {
     ),
   ];
 
-  TextStyle returnColor(int index) {
-    if (_currentIndex != index) {
-      return TextStyle(
-          fontSize: 14.5,
-          fontWeight: FontWeight.w600,
-          color:
-              Theme.of(context).textTheme.headline6!.color!.withOpacity(0.8));
-    } else {
-      return TextStyle(
-          fontSize: 14.5,
-          fontWeight: FontWeight.w600,
-          color: Theme.of(context).accentColor);
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
