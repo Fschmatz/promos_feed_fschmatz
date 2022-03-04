@@ -1,10 +1,11 @@
-class Changelog{
+class AppDetails{
 
-  static String appVersion = "1.2.2";
+  static String appVersion = "1.2.3";
   static String appName = "Promos Feed Fschmatz";
+  static String repositoryLink = "https://github.com/Fschmatz/promos_feed_fschmatz";
 
   static String changelogCurrent = '''  
-1.2.2
+1.2.3
 - Bug Fixes
 - Added System Theme
 - Material 3 NavBar

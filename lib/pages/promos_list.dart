@@ -92,7 +92,7 @@ class _PromosListState extends State<PromosList> {
           ];
         },
         body: AnimatedSwitcher(
-          duration: const Duration(milliseconds: 500),
+          duration: const Duration(milliseconds: 600),
           child: _loading
               ? Center(
                   child: CircularProgressIndicator(

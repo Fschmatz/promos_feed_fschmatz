@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:promos_feed_fschmatz/util/changelog.dart';
+import 'package:promos_feed_fschmatz/util/app_details.dart';
 import 'package:easy_dynamic_theme/easy_dynamic_theme.dart';
 import '../util/dialog_select_theme.dart';
 import '../util/utils_functions.dart';
@@ -42,7 +42,7 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
               child: ListTile(
                 title: Text(
-                  Changelog.appName + " " + Changelog.appVersion,
+                  AppDetails.appName + " " + AppDetails.appVersion,
                   textAlign: TextAlign.center,
                   style: const TextStyle(fontSize: 17.5, color: Colors.black),
                 ),

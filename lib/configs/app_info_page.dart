@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:promos_feed_fschmatz/util/changelog.dart';
+import 'package:promos_feed_fschmatz/util/app_details.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class AppInfoPage extends StatelessWidget {
@@ -7,7 +7,7 @@ class AppInfoPage extends StatelessWidget {
 
 
   _launchGithub()  {
-    const url = 'https://github.com/Fschmatz/promos_feed_fschmatz';
+    String url = AppDetails.repositoryLink;
     launch(url);
   }
 
@@ -33,7 +33,7 @@ class AppInfoPage extends StatelessWidget {
           ),
           const SizedBox(height: 15),
           Center(
-            child: Text(Changelog.appName +" "+ Changelog.appVersion,
+            child: Text(AppDetails.appName +" "+ AppDetails.appVersion,
                 style: TextStyle(
                     fontSize: 17,
                     fontWeight: FontWeight.w700,
