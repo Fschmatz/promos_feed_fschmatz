@@ -31,6 +31,9 @@ ThemeData light = ThemeData(
     ),
     dialogTheme: const DialogTheme(
       backgroundColor: Color(0xFFFFFFFF),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(28)),
+      ),
     ),
     snackBarTheme: const SnackBarThemeData(
       actionTextColor: Color(0xFFE87169),
@@ -70,7 +73,10 @@ ThemeData dark = ThemeData(
       color: Color(0xFF313034),
     ),
     dialogTheme: const DialogTheme(
-      backgroundColor: Color(0xFF212024),
+      backgroundColor: Color(0xFF313034),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(28)),
+      ),
     ),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       showSelectedLabels: false,

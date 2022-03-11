@@ -38,7 +38,7 @@ class _PromoTileState extends State<PromoTile> {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      contentPadding: const EdgeInsets.fromLTRB(16, 7, 16, 7),
+      contentPadding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
       onTap: () {
         _launchBrowser(widget.feed!.link!);
       },
@@ -46,7 +46,10 @@ class _PromoTileState extends State<PromoTile> {
         promoTitle,
         style: const TextStyle(fontSize: 16),
       ),
-      trailing: SizedBox(
+      onLongPress:  () {
+        Share.share(widget.feed!.link!);
+      },
+     /* trailing: SizedBox(
         width: 55,
         child: TextButton(
           onPressed: () {
@@ -70,7 +73,7 @@ class _PromoTileState extends State<PromoTile> {
             ),
           ),
         ),
-      ),
+      ),*/
     );
   }
 }
