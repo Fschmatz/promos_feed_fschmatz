@@ -19,10 +19,6 @@ class _PromoTileState extends State<PromoTile> {
   @override
   void initState() {
     promoTitle = widget.feed!.title!;
-    if (promoTitle.contains('hardmob')){
-      List formatString = promoTitle.split("https://");
-      promoTitle = formatString[0];
-    }
     super.initState();
   }
 
@@ -49,31 +45,6 @@ class _PromoTileState extends State<PromoTile> {
       onLongPress:  () {
         Share.share(widget.feed!.link!);
       },
-     /* trailing: SizedBox(
-        width: 55,
-        child: TextButton(
-          onPressed: () {
-            Share.share(widget.feed!.link!);
-          },
-          child: Icon(
-            Icons.share_outlined,
-            size: 19.0,
-            color: Theme.of(context)
-                .textTheme
-                .headline6!
-                .color!
-                .withOpacity(0.7),
-          ),
-          style: ElevatedButton.styleFrom(
-            elevation: 0,
-            primary: Theme.of(context).cardTheme.color,
-            onPrimary: Theme.of(context).colorScheme.primary,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12.0),
-            ),
-          ),
-        ),
-      ),*/
     );
   }
 }

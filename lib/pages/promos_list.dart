@@ -173,21 +173,15 @@ class _PromosListState extends State<PromosList> {
 Widget dataTile(DateTime data, BuildContext context, int index) {
   Color corDataTile = Theme.of(context).colorScheme.primary.withOpacity(0.9);
 
-  return Column(
-    children: [
-      Visibility(visible: index != 0, child: const Divider()),
-      ListTile(
-        leading: Icon(
-          Icons.calendar_today_outlined,
-          color: corDataTile,
-          size: 22,
-        ),
-        title: Text(
-          Jiffy(data).format("dd/MM/yyyy"),
-          style: TextStyle(
-              fontSize: 14, fontWeight: FontWeight.w700, color: corDataTile),
-        ),
-      ),
-    ],
+  return ListTile(
+    leading: Icon(
+      Icons.calendar_today_outlined,
+      color: corDataTile,
+    ),
+    title: Text(
+      Jiffy(data).format("dd/MM/yyyy"),
+      style: TextStyle(
+          fontSize: 14, fontWeight: FontWeight.w500, color: corDataTile),
+    ),
   );
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:promos_feed_fschmatz/pages/hm_scraper.dart';
 import 'package:promos_feed_fschmatz/pages/promos_list.dart';
 
 class Home extends StatefulWidget {
@@ -11,12 +12,8 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   int _currentIndex = 0;
   final List<Widget> _feedList = [
-    PromosList(
+    HardmobScraper(
       key: UniqueKey(),
-      urlFeed: 'https://nitter.net/hardmob_promo/rss',
-     //Retornando erro
-     /* urlFeed:
-          'https://bridge.noisebridge.info/?action=display&bridge=Twitter&context=By+username&u=hardmob_promo&norep=on&noretweet=on&nopinned=on&nopic=on&noimg=on&noimgscaling=on&format=Mrss',*/
     ),
     PromosList(
       key: UniqueKey(),
@@ -70,3 +67,16 @@ class _HomeState extends State<Home> {
     );
   }
 }
+
+/*
+ANTIGO HARD MOB COM FEED VIA TWITTER
+
+  PromosList(
+      key: UniqueKey(),
+      urlFeed: 'https://nitter.net/hardmob_promo/rss',
+     //Retornando erro
+     /* urlFeed:
+          'https://bridge.noisebridge.info/?action=display&bridge=Twitter&context=By+username&u=hardmob_promo&norep=on&noretweet=on&nopinned=on&nopic=on&noimg=on&noimgscaling=on&format=Mrss',*/
+    ),
+
+*/

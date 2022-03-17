@@ -1,18 +1,22 @@
 class AppDetails{
 
-  static String appVersion = "1.2.3";
+  static String appVersion = "1.3.0";
   static String appName = "Promos Feed Fschmatz";
   static String repositoryLink = "https://github.com/Fschmatz/promos_feed_fschmatz";
 
   static String changelogCurrent = '''  
+1.3.0
+- HardMob Web Scraper
+- UI Changes
+''';
+
+  static String changelogsOld = '''
 1.2.3
 - Bug Fixes
 - Added System Theme
 - Material 3 NavBar
 - Hide AppBar
-''';
 
-  static String changelogsOld = '''
 1.1.1
 - TimeOut
 - Bug Fixes

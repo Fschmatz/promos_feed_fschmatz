@@ -14,22 +14,24 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-
-  String getThemeStringFormatted(){
-    String theme =  EasyDynamicTheme.of(context).themeMode.toString().replaceAll('ThemeMode.', '');
-    if(theme == 'system'){theme = 'system default';}
+  String getThemeStringFormatted() {
+    String theme = EasyDynamicTheme.of(context)
+        .themeMode
+        .toString()
+        .replaceAll('ThemeMode.', '');
+    if (theme == 'system') {
+      theme = 'system default';
+    }
     return capitalizeFirstLetterString(theme);
   }
 
   @override
   Widget build(BuildContext context) {
-
     Color themeColorApp = Theme.of(context).colorScheme.primary;
 
     return Scaffold(
         appBar: AppBar(
           title: const Text("Settings"),
-          elevation: 0,
         ),
         body: ListView(
           children: <Widget>[
@@ -48,16 +50,12 @@ class _SettingsPageState extends State<SettingsPage> {
                 ),
               ),
             ),
-            const Divider(),
             ListTile(
-              leading: const SizedBox(height: 0.1,),
-              title:    Text(
-                  "General".toUpperCase(),
+              title: Text("General",
                   style: TextStyle(
-                      fontSize: 13,
-                      fontWeight: FontWeight.w700,
-                      color: themeColorApp)
-              ),
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                      color: themeColorApp)),
             ),
             ListTile(
               onTap: () => showDialog(
@@ -74,16 +72,12 @@ class _SettingsPageState extends State<SettingsPage> {
                 getThemeStringFormatted(),
               ),
             ),
-            const Divider(),
             ListTile(
-              leading: const SizedBox(height: 0.1,),
-              title:    Text(
-                  "About".toUpperCase(),
+              title: Text("About",
                   style: TextStyle(
-                      fontSize: 13,
-                      fontWeight: FontWeight.w700,
-                      color: themeColorApp)
-              ),
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                      color: themeColorApp)),
             ),
             ListTile(
               leading: const Icon(
