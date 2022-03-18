@@ -16,6 +16,8 @@ class PromoTileHm extends StatefulWidget {
 
 class _PromoTileHmState extends State<PromoTileHm> {
   String promoTitle = '';
+  TextStyle detailsStyle =
+      const TextStyle(fontSize: 14, fontWeight: FontWeight.w400);
 
   @override
   void initState() {
@@ -34,11 +36,6 @@ class _PromoTileHmState extends State<PromoTileHm> {
 
   @override
   Widget build(BuildContext context) {
-    Color appAccent = Theme.of(context).colorScheme.primary;
-
-    TextStyle detailsStyle =
-        TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: appAccent);
-
     return ListTile(
       contentPadding: const EdgeInsets.fromLTRB(16, 5, 16, 5),
       onTap: () {
@@ -50,15 +47,18 @@ class _PromoTileHmState extends State<PromoTileHm> {
       title: Text(
         promoTitle,
       ),
-      leading: SizedBox(
-        width: 50,
+      trailing : SizedBox(
+        width: 65,
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Icon(
               Icons.mode_comment_outlined,
-              color: appAccent,
-              size: 20,
+              size: 18,
+              color: Theme.of(context).textTheme.headline1!.color,
+            ),
+            const SizedBox(
+              width: 10,
             ),
             Text(widget.commentsCount, style: detailsStyle),
           ],
