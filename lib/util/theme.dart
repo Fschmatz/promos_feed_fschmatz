@@ -52,15 +52,15 @@ ThemeData light = ThemeData(
 ThemeData dark = ThemeData(
     useMaterial3: true,
     brightness: Brightness.dark,
-    primaryColor: const Color(0xFF212024),
-    scaffoldBackgroundColor: const Color(0xFF212024),
+    primaryColor: const Color(0xFF202024),
+    scaffoldBackgroundColor: const Color(0xFF202024),
     colorScheme: const ColorScheme.dark(
-        background: Color(0xFF212024),
+        background: Color(0xFF202024),
         primary:  Color(0xFFE87169),
         secondary: Color(0xFFE87169)
     ),
     appBarTheme: const AppBarTheme(
-        color: Color(0xFF212024),
+        color: Color(0xFF202024),
         elevation: 0,
         iconTheme: IconThemeData(
             color: Color(0xFFFFFFFF)
@@ -81,15 +81,15 @@ ThemeData dark = ThemeData(
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       showSelectedLabels: false,
       showUnselectedLabels: false,
-      backgroundColor: Color(0xFF161519),
+      backgroundColor: Color(0xFF18181B),
     ),
-    bottomAppBarColor: const Color(0xFF161519),
+    bottomAppBarColor: const Color(0xFF18181B),
     snackBarTheme: SnackBarThemeData(
       backgroundColor: const Color(0xFFF0F0F0),
       actionTextColor: Colors.red[700],
     ),
     navigationBarTheme: NavigationBarThemeData(
-        backgroundColor: const Color(0xFF161519),
+        backgroundColor: const Color(0xFF18181B),
         indicatorColor: const Color(0xFFE87169),
         iconTheme: MaterialStateProperty.all(
             const IconThemeData(color: Color(0xFFEAEAEA),)
@@ -97,4 +97,4 @@ ThemeData dark = ThemeData(
         labelTextStyle: MaterialStateProperty.all(const TextStyle(
             color: Color(0xFFEAEAEA), fontWeight: FontWeight.w500))),
     bottomSheetTheme:
-    const BottomSheetThemeData(modalBackgroundColor: Color(0xFF212024)));
+    const BottomSheetThemeData(modalBackgroundColor: Color(0xFF202024)));

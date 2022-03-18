@@ -40,7 +40,7 @@ class _PromoTileHmState extends State<PromoTileHm> {
         TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: appAccent);
 
     return ListTile(
-      contentPadding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+      contentPadding: const EdgeInsets.fromLTRB(16, 5, 16, 5),
       onTap: () {
         _launchBrowser(widget.feed!.link!);
       },
@@ -49,17 +49,17 @@ class _PromoTileHmState extends State<PromoTileHm> {
       },
       title: Text(
         promoTitle,
-        style: const TextStyle(fontSize: 16),
       ),
-      trailing: SizedBox(
-        width: 60,
+      leading: SizedBox(
+        width: 50,
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Icon(
               Icons.mode_comment_outlined,
               color: appAccent,
+              size: 20,
             ),
-            const SizedBox(width: 10,),
             Text(widget.commentsCount, style: detailsStyle),
           ],
         ),

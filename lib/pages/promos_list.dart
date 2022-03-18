@@ -125,17 +125,14 @@ class _PromosListState extends State<PromosList> {
                       : ListView(
                           physics: const AlwaysScrollableScrollPhysics(),
                           children: [
-                              ListView.separated(
-                                separatorBuilder:
-                                    (BuildContext context, int index) =>
-                                        const SizedBox(
-                                  height: 16,
-                                ),
+                              ListView.builder(
                                 physics: const NeverScrollableScrollPhysics(),
                                 shrinkWrap: true,
                                 itemCount: _feedList!.length,
                                 itemBuilder: (context, index) {
-                                  return Column(children: [
+                                  return Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
                                     Visibility(
                                         visible: index == 0,
                                         child: dataTile(
@@ -149,6 +146,7 @@ class _PromosListState extends State<PromosList> {
                                             context,
                                             index)),
                                     PromoTile(
+                                      key: UniqueKey(),
                                       feed: Feed(
                                           data: _feedList![index]
                                               .pubDate!

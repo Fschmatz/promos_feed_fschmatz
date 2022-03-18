@@ -1,13 +1,14 @@
 class AppDetails{
 
-  static String appVersion = "1.3.0";
+  static String appVersion = "1.3.1";
   static String appName = "Promos Feed Fschmatz";
   static String repositoryLink = "https://github.com/Fschmatz/promos_feed_fschmatz";
 
   static String changelogCurrent = '''  
-1.3.0
+1.3.1
 - HardMob Web Scraper
 - UI Changes
+- Bug Fix
 ''';
 
   static String changelogsOld = '''

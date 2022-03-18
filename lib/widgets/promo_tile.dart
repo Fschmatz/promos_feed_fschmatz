@@ -34,13 +34,12 @@ class _PromoTileState extends State<PromoTile> {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      contentPadding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+      contentPadding: const EdgeInsets.fromLTRB(16, 5, 16, 5),
       onTap: () {
         _launchBrowser(widget.feed!.link!);
       },
       title: Text(
         promoTitle,
-        style: const TextStyle(fontSize: 16),
       ),
       onLongPress:  () {
         Share.share(widget.feed!.link!);

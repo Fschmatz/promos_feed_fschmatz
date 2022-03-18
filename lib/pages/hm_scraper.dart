@@ -4,7 +4,6 @@ import 'package:promos_feed_fschmatz/widgets/promo_tile_hm.dart';
 import 'package:web_scraper/web_scraper.dart';
 import 'package:promos_feed_fschmatz/classes/feed.dart';
 import 'package:promos_feed_fschmatz/configs/settings_page.dart';
-import 'package:promos_feed_fschmatz/widgets/promo_tile.dart';
 
 class HardmobScraper extends StatefulWidget {
   const HardmobScraper({Key? key}) : super(key: key);
@@ -28,6 +27,8 @@ class _HardmobScraperState extends State<HardmobScraper> {
   }
 
   Future<void> parseData() async {
+
+
     final webScraper = WebScraper(mainUrl);
     if (await webScraper.loadWebPage(sectionUrl)) {
       _titleList = webScraper.getElement(
@@ -104,16 +105,13 @@ class _HardmobScraperState extends State<HardmobScraper> {
                   child: ListView(
                       physics: const AlwaysScrollableScrollPhysics(),
                       children: [
-                        ListView.separated(
-                          separatorBuilder: (BuildContext context, int index) =>
-                              const SizedBox(
-                            height: 16,
-                          ),
+                        ListView.builder(
                           physics: const NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
                           itemCount: _titleList.length,
                           itemBuilder: (context, index) {
                             return PromoTileHm(
+                              key: UniqueKey(),
                               feed: Feed(
                                   data: ' ',
                                   title: _titleList[index]['title'],
