@@ -9,8 +9,9 @@ class PromoTileHm extends StatefulWidget {
 
   Feed? feed;
   String commentsCount;
+  String lastCommentLink;
 
-  PromoTileHm({Key? key, required this.feed, required this.commentsCount})
+  PromoTileHm({Key? key, required this.feed, required this.commentsCount, required this.lastCommentLink})
       : super(key: key);
 }
 
@@ -34,13 +35,11 @@ class _PromoTileHmState extends State<PromoTileHm> {
 
   @override
   Widget build(BuildContext context) {
-
-    Color accent = Theme.of(context).colorScheme.primary.withOpacity(0.9);
     TextStyle detailsStyle =
-     TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: accent);
+        const TextStyle(fontSize: 12, fontWeight: FontWeight.w500);
 
     return ListTile(
-      contentPadding: const EdgeInsets.fromLTRB(16, 5, 16, 5),
+      contentPadding: const EdgeInsets.fromLTRB(16, 5, 16, 8),
       onTap: () {
         _launchBrowser(widget.feed!.link!);
       },
@@ -50,7 +49,39 @@ class _PromoTileHmState extends State<PromoTileHm> {
       title: Text(
         promoTitle,
       ),
-      trailing : SizedBox(
+      trailing: SizedBox(
+        width: 70,
+        child: TextButton(
+          onPressed: () {
+            _launchBrowser(widget.lastCommentLink);
+          },
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              const Icon(
+                Icons.mode_comment_outlined,
+                size: 18,
+              ),
+              Text(widget.commentsCount, style: detailsStyle),
+            ],
+          ),
+          style: ElevatedButton.styleFrom(
+            elevation: 0,
+            primary: Theme.of(context).cardTheme.color,
+            onPrimary: Theme.of(context).textTheme.headline1!.color,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8.0),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
+
+/*trailing : SizedBox(
         width: 65,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
@@ -66,7 +97,4 @@ class _PromoTileHmState extends State<PromoTileHm> {
             Text(widget.commentsCount, style: detailsStyle),
           ],
         ),
-      ),
-    );
-  }
-}
+      ),*/
