@@ -39,7 +39,7 @@ class _PromoTileHmState extends State<PromoTileHm> {
         const TextStyle(fontSize: 12, fontWeight: FontWeight.w500);
 
     return ListTile(
-      contentPadding: const EdgeInsets.fromLTRB(16, 5, 16, 8),
+      contentPadding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
       onTap: () {
         _launchBrowser(widget.feed!.link!);
       },
@@ -68,7 +68,7 @@ class _PromoTileHmState extends State<PromoTileHm> {
           style: ElevatedButton.styleFrom(
             elevation: 0,
             primary: Theme.of(context).cardTheme.color,
-            onPrimary: Theme.of(context).textTheme.headline1!.color,
+            onPrimary: Theme.of(context).textTheme.headline6!.color!.withOpacity(0.9),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8.0),
             ),

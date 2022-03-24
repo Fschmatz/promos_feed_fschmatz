@@ -70,7 +70,7 @@ ThemeData dark = ThemeData(
             fontWeight: FontWeight.w400,
             color: Color(0xFFFFFFFF))),
     cardTheme: const CardTheme(
-      color: Color(0xFF2A2A2E),
+      color: Color(0xFF2D2D2F),
     ),
     dialogTheme: const DialogTheme(
       backgroundColor: Color(0xFF313034),
@@ -81,15 +81,15 @@ ThemeData dark = ThemeData(
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       showSelectedLabels: false,
       showUnselectedLabels: false,
-      backgroundColor: Color(0xFF28282A),
+      backgroundColor: Color(0xFF272729),
     ),
-    bottomAppBarColor: const Color(0xFF28282A),
+    bottomAppBarColor: const Color(0xFF272729),
     snackBarTheme: SnackBarThemeData(
       backgroundColor: const Color(0xFFF0F0F0),
       actionTextColor: Colors.red[700],
     ),
     navigationBarTheme: NavigationBarThemeData(
-        backgroundColor: const Color(0xFF28282A),
+        backgroundColor: const Color(0xFF272729),
         indicatorColor: const Color(0xFFE87169),
         iconTheme: MaterialStateProperty.all(
             const IconThemeData(color: Color(0xFFEAEAEA),)
@@ -97,4 +97,4 @@ ThemeData dark = ThemeData(
         labelTextStyle: MaterialStateProperty.all(const TextStyle(
             color: Color(0xFFEAEAEA), fontWeight: FontWeight.w500))),
     bottomSheetTheme:
-    const BottomSheetThemeData(modalBackgroundColor: Color(0xFF28282A)));
+    const BottomSheetThemeData(modalBackgroundColor: Color(0xFF272729)));
