@@ -48,92 +48,82 @@ class _PromoTileHmState extends State<PromoTileHm> {
         fontWeight: FontWeight.w500,
         color: Theme.of(context).colorScheme.primary.withOpacity(0.8));
 
-    return Column(
-      children: [
-        ListTile(
-          onTap: () {
-            _launchBrowser(widget.feed!.link!);
-          },
-          onLongPress: () {
-            Share.share(widget.feed!.link!);
-          },
-          title: Text(
-            promoTitle,
+    return InkWell(
+      onTap: () {
+        _launchBrowser(widget.feed!.link!);
+      },
+      onLongPress: () {
+        Share.share(widget.feed!.link!);
+      },
+      child: Column(
+        children: [
+          ListTile(
+            title: Text(
+              promoTitle,
+            ),
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                children: [
-                  Icon(Icons.access_time_outlined,size: 18,color:  Theme.of(context).colorScheme.primary,),
-                  const SizedBox(width: 5,),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 28),
-                    child: Text(
-                      widget.lastCommentTime,
-                      textAlign: TextAlign.left,
-                      style: lastCommentStyle,
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(
-                width: 70,
-                child: TextButton(
-                  onPressed: () {
-                    _launchBrowser(widget.lastCommentLink);
-                  },
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      const Icon(
-                        Icons.mode_comment_outlined,
-                        size: 18,
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Wrap(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 22, 0, 0),
+                      child: Icon(
+                        Icons.access_time_outlined,
+                        size: 19,
+                        color: Theme.of(context).colorScheme.primary,
                       ),
-                      Text(widget.commentsCount, style: detailsStyle),
-                    ],
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    elevation: 0,
-                    primary: Theme.of(context).cardTheme.color,
-                    onPrimary: Theme.of(context)
-                        .textTheme
-                        .headline6!
-                        .color!
-                        .withOpacity(0.9),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 25, 0, 0),
+                      child: Text(
+                        widget.lastCommentTime,
+                        style: lastCommentStyle,
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  width: 70,
+                  child: TextButton(
+                    onPressed: () {
+                      _launchBrowser(widget.lastCommentLink);
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        const Icon(
+                          Icons.mode_comment_outlined,
+                          size: 19,
+                        ),
+                        Text(widget.commentsCount, style: detailsStyle),
+                      ],
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      elevation: 0,
+                      primary: Theme.of(context).cardTheme.color,
+                      onPrimary: Theme.of(context)
+                          .textTheme
+                          .headline6!
+                          .color!
+                          .withOpacity(0.9),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
                     ),
                   ),
                 ),
-              ),
-
-            ],
-          ),
-        )
-      ],
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 }
-
-/*trailing : SizedBox(
-        width: 65,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            Icon(
-              Icons.mode_comment_outlined,
-              size: 18,
-              color: accent,
-            ),
-            const SizedBox(
-              width: 10,
-            ),
-            Text(widget.commentsCount, style: detailsStyle),
-          ],
-        ),
-      ),*/
