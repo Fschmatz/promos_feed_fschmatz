@@ -70,7 +70,7 @@ class _PromoTileHmState extends State<PromoTileHm> {
                 Wrap(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 22, 0, 0),
+                      padding: const EdgeInsets.fromLTRB(0, 23, 0, 0),
                       child: Icon(
                         Icons.access_time_outlined,
                         size: 19,
