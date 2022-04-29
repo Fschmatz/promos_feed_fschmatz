@@ -20,6 +20,7 @@ class _HardmobScraperState extends State<HardmobScraper> {
   List<Map<String, dynamic>> _titleList = [];
   List<Map<String, dynamic>> _commentsCount = [];
   List<Map<String, dynamic>> _lastCommentLink = [];
+  List<Map<String, dynamic>> _lastCommentTime = [];
 
   @override
   void initState() {
@@ -41,15 +42,20 @@ class _HardmobScraperState extends State<HardmobScraper> {
       _lastCommentLink =
           webScraper.getElement('li.threadbit > div > dl > dd > a', ['href']);
 
+      _lastCommentTime =
+          webScraper.getElement('li.threadbit > div > dl > dd:nth-child(7)', []) ;
+
       //REMOVE FIXED POSTS
       _titleList.removeRange(0, 2);
       _commentsCount.removeRange(0, 2);
       _lastCommentLink.removeRange(0, 2);
+      _lastCommentTime.removeRange(0, 2);
 
       setState(() {
         _titleList;
         _commentsCount;
         _lastCommentLink;
+        _lastCommentTime;
         _loading = false;
       });
     } else {
@@ -124,6 +130,7 @@ class _HardmobScraperState extends State<HardmobScraper> {
                                   link: linkUrl +
                                       _titleList[index]['attributes']['href']),
                               commentsCount: _commentsCount[index]['title'],
+                              lastCommentTime: _lastCommentTime[index]['title'],
                               lastCommentLink: linkUrl +
                                   _lastCommentLink[index]['attributes']['href'],
                             );

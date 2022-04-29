@@ -9,9 +9,15 @@ class PromoTileHm extends StatefulWidget {
 
   Feed? feed;
   String commentsCount;
+  String lastCommentTime;
   String lastCommentLink;
 
-  PromoTileHm({Key? key, required this.feed, required this.commentsCount, required this.lastCommentLink})
+  PromoTileHm(
+      {Key? key,
+      required this.feed,
+      required this.commentsCount,
+      required this.lastCommentTime,
+      required this.lastCommentLink})
       : super(key: key);
 }
 
@@ -37,49 +43,82 @@ class _PromoTileHmState extends State<PromoTileHm> {
   Widget build(BuildContext context) {
     TextStyle detailsStyle =
         const TextStyle(fontSize: 12, fontWeight: FontWeight.w500);
+    TextStyle lastCommentStyle = TextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w500,
+        color: Theme.of(context).colorScheme.primary.withOpacity(0.8));
 
-    return ListTile(
-      contentPadding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
-      onTap: () {
-        _launchBrowser(widget.feed!.link!);
-      },
-      onLongPress: () {
-        Share.share(widget.feed!.link!);
-      },
-      title: Text(
-        promoTitle,
-      ),
-      trailing: SizedBox(
-        width: 70,
-        child: TextButton(
-          onPressed: () {
-            _launchBrowser(widget.lastCommentLink);
+    return Column(
+      children: [
+        ListTile(
+          onTap: () {
+            _launchBrowser(widget.feed!.link!);
           },
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              const Icon(
-                Icons.mode_comment_outlined,
-                size: 18,
-              ),
-              Text(widget.commentsCount, style: detailsStyle),
-            ],
-          ),
-          style: ElevatedButton.styleFrom(
-            elevation: 0,
-            primary: Theme.of(context).cardTheme.color,
-            onPrimary: Theme.of(context).textTheme.headline6!.color!.withOpacity(0.9),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8.0),
-            ),
+          onLongPress: () {
+            Share.share(widget.feed!.link!);
+          },
+          title: Text(
+            promoTitle,
           ),
         ),
-      ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Icon(Icons.access_time_outlined,size: 18,color:  Theme.of(context).colorScheme.primary,),
+                  const SizedBox(width: 5,),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 28),
+                    child: Text(
+                      widget.lastCommentTime,
+                      textAlign: TextAlign.left,
+                      style: lastCommentStyle,
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                width: 70,
+                child: TextButton(
+                  onPressed: () {
+                    _launchBrowser(widget.lastCommentLink);
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      const Icon(
+                        Icons.mode_comment_outlined,
+                        size: 18,
+                      ),
+                      Text(widget.commentsCount, style: detailsStyle),
+                    ],
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    elevation: 0,
+                    primary: Theme.of(context).cardTheme.color,
+                    onPrimary: Theme.of(context)
+                        .textTheme
+                        .headline6!
+                        .color!
+                        .withOpacity(0.9),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                  ),
+                ),
+              ),
+
+            ],
+          ),
+        )
+      ],
     );
   }
 }
-
-
 
 /*trailing : SizedBox(
         width: 65,
