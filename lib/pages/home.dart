@@ -49,7 +49,6 @@ class _HomeState extends State<Home> {
             icon: Icon(Icons.local_offer_outlined),
             selectedIcon: Icon(
               Icons.local_offer,
-              color: Colors.black87,
             ),
             label: 'For Sale',
           ),

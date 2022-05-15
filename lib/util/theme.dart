@@ -92,9 +92,9 @@ ThemeData dark = ThemeData(
         backgroundColor: const Color(0xFF282729),
         indicatorColor: const Color(0xFF7E2B26),
         iconTheme: MaterialStateProperty.all(
-            const IconThemeData(color: Color(0xFFEEE4E3),)
+            const IconThemeData(color: Color(0xFFEEE7E6),)
         ),
         labelTextStyle: MaterialStateProperty.all(const TextStyle(
-            color: Color(0xFFEEE4E3), fontWeight: FontWeight.w500))),
+            color: Color(0xFFEEE7E6), fontWeight: FontWeight.w500))),
     bottomSheetTheme:
     const BottomSheetThemeData(modalBackgroundColor: Color(0xFF282729)));

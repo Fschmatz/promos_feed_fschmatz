@@ -43,11 +43,10 @@ class _PromoTileHmState extends State<PromoTileHm> {
   Widget build(BuildContext context) {
     TextStyle detailsStyle =
         const TextStyle(fontSize: 12, fontWeight: FontWeight.w500);
-    TextStyle lastCommentStyle =  TextStyle(
+    TextStyle lastCommentStyle = TextStyle(
         fontSize: 12,
         fontWeight: FontWeight.w500,
-        color: Theme.of(context).colorScheme.secondary
-    );
+        color: Theme.of(context).colorScheme.secondary);
 
     return ListTile(
       contentPadding: const EdgeInsets.fromLTRB(16, 10, 16, 10),
@@ -57,14 +56,14 @@ class _PromoTileHmState extends State<PromoTileHm> {
       onLongPress: () {
         Share.share(widget.feed!.link!);
       },
-      title:  Text(
-      promoTitle,
-    ),
+      title: Text(
+        promoTitle,
+      ),
       subtitle: Text(
         widget.lastCommentTime.trim(),
         style: lastCommentStyle,
       ),
-      trailing:  SizedBox(
+      trailing: SizedBox(
         width: 60,
         child: TextButton(
           onPressed: () {
@@ -77,103 +76,23 @@ class _PromoTileHmState extends State<PromoTileHm> {
                 Icons.mode_comment_outlined,
                 size: 16,
               ),
-              const SizedBox(width: 2,),
+              const SizedBox(
+                width: 2,
+              ),
               Text(widget.commentsCount, style: detailsStyle),
             ],
           ),
           style: ElevatedButton.styleFrom(
             elevation: 0,
             primary: Theme.of(context).cardTheme.color,
-            onPrimary: Theme.of(context)
-                .textTheme
-                .headline6!
-                .color!
-                .withOpacity(0.9),
+            onPrimary:
+                Theme.of(context).textTheme.headline6!.color!.withOpacity(0.9),
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8.0),
+              borderRadius: BorderRadius.circular(10.0),
             ),
           ),
         ),
       ),
     );
-
-
-     /* InkWell(
-      onTap: () {
-        _launchBrowser(widget.feed!.link!);
-      },
-      onLongPress: () {
-        Share.share(widget.feed!.link!);
-      },
-      child: Column(
-        children: [
-          ListTile(
-            title: Text(
-              promoTitle,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Wrap(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 23, 0, 0),
-                      child: Icon(
-                        Icons.access_time_outlined,
-                        size: 19,
-                        color: Theme.of(context).colorScheme.primary,
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 5,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 25, 0, 0),
-                      child: Text(
-                        widget.lastCommentTime,
-                        style: lastCommentStyle,
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  width: 70,
-                  child: TextButton(
-                    onPressed: () {
-                      _launchBrowser(widget.lastCommentLink);
-                    },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        const Icon(
-                          Icons.mode_comment_outlined,
-                          size: 19,
-                        ),
-                        Text(widget.commentsCount, style: detailsStyle),
-                      ],
-                    ),
-                    style: ElevatedButton.styleFrom(
-                      elevation: 0,
-                      primary: Theme.of(context).cardTheme.color,
-                      onPrimary: Theme.of(context)
-                          .textTheme
-                          .headline6!
-                          .color!
-                          .withOpacity(0.9),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          )
-        ],
-      ),
-    );*/
   }
 }
