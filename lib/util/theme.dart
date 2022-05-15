@@ -57,7 +57,7 @@ ThemeData dark = ThemeData(
     colorScheme: const ColorScheme.dark(
         background: Color(0xFF1E1D1F),
         primary:  Color(0xFFE87169),
-        secondary: Color(0xFFE87169)
+        secondary: Color(0xFFDE7973)
     ),
     appBarTheme: const AppBarTheme(
         color: Color(0xFF1E1D1F),
@@ -90,11 +90,11 @@ ThemeData dark = ThemeData(
     ),
     navigationBarTheme: NavigationBarThemeData(
         backgroundColor: const Color(0xFF282729),
-        indicatorColor: const Color(0xFFE87169),
+        indicatorColor: const Color(0xFF7E2B26),
         iconTheme: MaterialStateProperty.all(
-            const IconThemeData(color: Color(0xFFEAEAEA),)
+            const IconThemeData(color: Color(0xFFEEE4E3),)
         ),
         labelTextStyle: MaterialStateProperty.all(const TextStyle(
-            color: Color(0xFFEAEAEA), fontWeight: FontWeight.w500))),
+            color: Color(0xFFEEE4E3), fontWeight: FontWeight.w500))),
     bottomSheetTheme:
     const BottomSheetThemeData(modalBackgroundColor: Color(0xFF282729)));

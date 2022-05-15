@@ -43,12 +43,62 @@ class _PromoTileHmState extends State<PromoTileHm> {
   Widget build(BuildContext context) {
     TextStyle detailsStyle =
         const TextStyle(fontSize: 12, fontWeight: FontWeight.w500);
-    TextStyle lastCommentStyle = TextStyle(
+    TextStyle lastCommentStyle =  TextStyle(
         fontSize: 12,
         fontWeight: FontWeight.w500,
-        color: Theme.of(context).colorScheme.primary.withOpacity(0.8));
+        color: Theme.of(context).colorScheme.secondary
+    );
 
-    return InkWell(
+    return ListTile(
+      contentPadding: const EdgeInsets.fromLTRB(16, 10, 16, 10),
+      onTap: () {
+        _launchBrowser(widget.feed!.link!);
+      },
+      onLongPress: () {
+        Share.share(widget.feed!.link!);
+      },
+      title:  Text(
+      promoTitle,
+    ),
+      subtitle: Text(
+        widget.lastCommentTime.trim(),
+        style: lastCommentStyle,
+      ),
+      trailing:  SizedBox(
+        width: 60,
+        child: TextButton(
+          onPressed: () {
+            _launchBrowser(widget.lastCommentLink);
+          },
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              const Icon(
+                Icons.mode_comment_outlined,
+                size: 16,
+              ),
+              const SizedBox(width: 2,),
+              Text(widget.commentsCount, style: detailsStyle),
+            ],
+          ),
+          style: ElevatedButton.styleFrom(
+            elevation: 0,
+            primary: Theme.of(context).cardTheme.color,
+            onPrimary: Theme.of(context)
+                .textTheme
+                .headline6!
+                .color!
+                .withOpacity(0.9),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8.0),
+            ),
+          ),
+        ),
+      ),
+    );
+
+
+     /* InkWell(
       onTap: () {
         _launchBrowser(widget.feed!.link!);
       },
@@ -124,6 +174,6 @@ class _PromoTileHmState extends State<PromoTileHm> {
           )
         ],
       ),
-    );
+    );*/
   }
 }

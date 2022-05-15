@@ -42,7 +42,6 @@ class _HomeState extends State<Home> {
             icon: Icon(Icons.shopping_bag_outlined),
             selectedIcon: Icon(
               Icons.shopping_bag,
-              color: Colors.black87,
             ),
             label: 'HardMob',
           ),
@@ -58,7 +57,6 @@ class _HomeState extends State<Home> {
             icon: Icon(Icons.public_outlined),
             selectedIcon: Icon(
               Icons.public,
-              color: Colors.black87,
             ),
             label: 'Importados',
           ),
