@@ -43,6 +43,7 @@ class _PromoTileHmState extends State<PromoTileHm> {
   Widget build(BuildContext context) {
     TextStyle detailsStyle =
         const TextStyle(fontSize: 12, fontWeight: FontWeight.w500);
+
     TextStyle lastCommentStyle = TextStyle(
         fontSize: 12,
         fontWeight: FontWeight.w500,

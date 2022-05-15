@@ -5,6 +5,8 @@ import 'package:web_scraper/web_scraper.dart';
 import 'package:promos_feed_fschmatz/classes/feed.dart';
 import 'package:promos_feed_fschmatz/configs/settings_page.dart';
 
+import '../widgets/sliver_app_bar.dart';
+
 class HardmobScraper extends StatefulWidget {
   const HardmobScraper({Key? key}) : super(key: key);
 
@@ -80,27 +82,7 @@ class _HardmobScraperState extends State<HardmobScraper> {
       body: NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return <Widget>[
-            SliverAppBar(
-              title: const Text('Promos Feed'),
-              pinned: false,
-              floating: true,
-              snap: true,
-              actions: [
-                IconButton(
-                    icon: const Icon(
-                      Icons.settings_outlined,
-                    ),
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute<void>(
-                            builder: (BuildContext context) =>
-                                const SettingsPage(),
-                            fullscreenDialog: true,
-                          ));
-                    }),
-              ],
-            ),
+            const AppBarSliver()
           ];
         },
         body: AnimatedSwitcher(

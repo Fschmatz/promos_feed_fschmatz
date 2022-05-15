@@ -48,9 +48,6 @@ class AppInfoPage extends StatelessWidget {
             leading: Icon(Icons.info_outline),
             title: Text(
               "Application created using Flutter and the Dart language, used for testing and learning.",
-              style: TextStyle(
-                fontSize: 16,
-              ),
             ),
           ),
           ListTile(
@@ -80,7 +77,6 @@ class AppInfoPage extends StatelessWidget {
             leading: Icon(Icons.messenger_outline),
             title: Text(
               "Money unfortunately leads to Happiness & Sadness in today’s times.",
-              style: TextStyle(fontSize: 16),
             ),
           ),
         ]));

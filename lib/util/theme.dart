@@ -21,13 +21,13 @@ ThemeData light = ThemeData(
             fontWeight: FontWeight.w400,
             color: Color(0xFF000000))),
     cardTheme: const CardTheme(
-      color: Color(0xFFF6F6F6),
+      color: Color(0xFFF5F3F3),
     ),
-    bottomAppBarColor: const Color(0xFFE9E8E8),
+    bottomAppBarColor: const Color(0xFFE9E6E6),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       showSelectedLabels: false,
       showUnselectedLabels: false,
-      backgroundColor: Color(0xFFE9E8E8),
+      backgroundColor: Color(0xFFE9E6E6),
     ),
     dialogTheme: const DialogTheme(
       backgroundColor: Color(0xFFFFFFFF),
@@ -39,7 +39,7 @@ ThemeData light = ThemeData(
       actionTextColor: Color(0xFFE87169),
     ),
     navigationBarTheme: NavigationBarThemeData(
-        backgroundColor: const Color(0xFFE9E8E8),
+        backgroundColor: const Color(0xFFE9E6E6),
         indicatorColor: Colors.red.shade600,
         iconTheme: MaterialStateProperty.all(
             const IconThemeData(color: Color(0xFF050505),)
@@ -52,15 +52,15 @@ ThemeData light = ThemeData(
 ThemeData dark = ThemeData(
     useMaterial3: true,
     brightness: Brightness.dark,
-    primaryColor: const Color(0xFF1E1D1F),
-    scaffoldBackgroundColor: const Color(0xFF1E1D1F),
+    primaryColor: const Color(0xFF222022),
+    scaffoldBackgroundColor: const Color(0xFF222022),
     colorScheme: const ColorScheme.dark(
-        background: Color(0xFF1E1D1F),
+        background: Color(0xFF222022),
         primary:  Color(0xFFE87169),
         secondary: Color(0xFFDE7973)
     ),
     appBarTheme: const AppBarTheme(
-        color: Color(0xFF1E1D1F),
+        color: Color(0xFF222022),
         elevation: 0,
         iconTheme: IconThemeData(
             color: Color(0xFFFFFFFF)
@@ -70,7 +70,7 @@ ThemeData dark = ThemeData(
             fontWeight: FontWeight.w400,
             color: Color(0xFFFFFFFF))),
     cardTheme: const CardTheme(
-      color: Color(0xFF2E2D2F),
+      color: Color(0xFF323032),
     ),
     dialogTheme: const DialogTheme(
       backgroundColor: Color(0xFF313034),
@@ -81,20 +81,20 @@ ThemeData dark = ThemeData(
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       showSelectedLabels: false,
       showUnselectedLabels: false,
-      backgroundColor: Color(0xFF282729),
+      backgroundColor: Color(0xFF292729),
     ),
-    bottomAppBarColor: const Color(0xFF282729),
+    bottomAppBarColor: const Color(0xFF292729),
     snackBarTheme: SnackBarThemeData(
       backgroundColor: const Color(0xFFF0F0F0),
       actionTextColor: Colors.red[700],
     ),
     navigationBarTheme: NavigationBarThemeData(
-        backgroundColor: const Color(0xFF282729),
-        indicatorColor: const Color(0xFF7E2B26),
+        backgroundColor: const Color(0xFF292729),
+        indicatorColor: const Color(0xFF833833),
         iconTheme: MaterialStateProperty.all(
             const IconThemeData(color: Color(0xFFEEE7E6),)
         ),
         labelTextStyle: MaterialStateProperty.all(const TextStyle(
             color: Color(0xFFEEE7E6), fontWeight: FontWeight.w500))),
     bottomSheetTheme:
-    const BottomSheetThemeData(modalBackgroundColor: Color(0xFF282729)));
+    const BottomSheetThemeData(modalBackgroundColor: Color(0xFF292729)));

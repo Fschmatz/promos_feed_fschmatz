@@ -65,7 +65,6 @@ class _SettingsPageState extends State<SettingsPage> {
               leading: const Icon(Icons.brightness_6_outlined),
               title: const Text(
                 "App Theme",
-                style: TextStyle(fontSize: 16),
               ),
               subtitle: Text(
                 getThemeStringFormatted(),
@@ -84,14 +83,12 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
               title: const Text(
                 "App Info",
-                style: TextStyle(fontSize: 16),
               ),
               onTap: () {
                 Navigator.push(
                     context,
-                    MaterialPageRoute<void>(
-                      builder: (BuildContext context) => AppInfoPage(),
-                      fullscreenDialog: true,
+                    MaterialPageRoute(
+                      builder: (BuildContext context) => const AppInfoPage(),
                     ));
               },
             ),
@@ -101,14 +98,12 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
               title: const Text(
                 "Changelog",
-                style: TextStyle(fontSize: 16),
               ),
               onTap: () {
                 Navigator.push(
                     context,
-                    MaterialPageRoute<void>(
+                    MaterialPageRoute(
                       builder: (BuildContext context) => const ChangelogPage(),
-                      fullscreenDialog: true,
                     ));
               },
             ),

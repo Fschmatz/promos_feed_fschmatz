@@ -7,6 +7,8 @@ import 'package:promos_feed_fschmatz/widgets/promo_tile.dart';
 import 'package:webfeed/webfeed.dart';
 import 'package:jiffy/jiffy.dart';
 
+import '../widgets/sliver_app_bar.dart';
+
 class PromosList extends StatefulWidget {
   String urlFeed;
 
@@ -68,27 +70,7 @@ class _PromosListState extends State<PromosList> {
       body: NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return <Widget>[
-            SliverAppBar(
-              title: const Text('Promos Feed'),
-              pinned: false,
-              floating: true,
-              snap: true,
-              actions: [
-                IconButton(
-                    icon: const Icon(
-                      Icons.settings_outlined,
-                    ),
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute<void>(
-                            builder: (BuildContext context) =>
-                                const SettingsPage(),
-                            fullscreenDialog: true,
-                          ));
-                    }),
-              ],
-            ),
+            const AppBarSliver()
           ];
         },
         body: AnimatedSwitcher(
