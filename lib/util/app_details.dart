@@ -1,15 +1,16 @@
 class AppDetails{
 
-  static String appVersion = "1.3.4";
+  static String appVersion = "1.3.5";
   static String appName = "Promos Feed Fschmatz";
   static String repositoryLink = "https://github.com/Fschmatz/promos_feed_fschmatz";
 
   static String changelogCurrent = '''  
-1.3.4
+1.3.5
 - HardMob Web Scraper
 - HardMob Go to Last Comment Button
 - UI Changes
 - Bug Fix
+- Flutter 3 Update
 ''';
 
   static String changelogsOld = '''
