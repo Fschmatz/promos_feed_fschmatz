@@ -41,7 +41,10 @@ class _PromoTileHmState extends State<PromoTileHm> {
   @override
   Widget build(BuildContext context) {
     TextStyle detailsStyle =
-        const TextStyle(fontSize: 14, fontWeight: FontWeight.w500);
+         TextStyle(
+          color: Theme.of(context).hintColor,
+            fontSize: 14,
+            fontWeight: FontWeight.w500);
 
     TextStyle lastCommentTimeStyle = TextStyle(
         fontSize: 12,
@@ -49,7 +52,7 @@ class _PromoTileHmState extends State<PromoTileHm> {
         color: Theme.of(context).colorScheme.secondary);
 
     return ListTile(
-      contentPadding: const EdgeInsets.fromLTRB(16, 5, 16, 5),
+      contentPadding: const EdgeInsets.fromLTRB(16, 8, 16, 5),
       onTap: () {
         _launchBrowser(widget.feed!.link!);
       },
@@ -60,7 +63,7 @@ class _PromoTileHmState extends State<PromoTileHm> {
         promoTitle,
       ),
       subtitle: Padding(
-        padding: const EdgeInsets.only(top: 12,bottom: 3),
+        padding: const EdgeInsets.only(top: 12,bottom: 4),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -70,7 +73,7 @@ class _PromoTileHmState extends State<PromoTileHm> {
             ),
             SizedBox(
               height: 40,
-              width: 80,
+              width: 75,
               child: TextButton(
                 onPressed: () {
                   _launchBrowser(widget.lastCommentLink);
@@ -78,20 +81,16 @@ class _PromoTileHmState extends State<PromoTileHm> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    const Icon(
+                    Icon(
                       Icons.mode_comment_outlined,
                       size: 16,
+                      color: Theme.of(context).hintColor,
                     ),
                     Text(widget.commentsCount, style: detailsStyle),
                   ],
                 ),
                 style: ElevatedButton.styleFrom(
                   primary: Theme.of(context).cardTheme.color,
-                  onPrimary: Theme.of(context)
-                      .textTheme
-                      .headline6!
-                      .color!
-                      .withOpacity(0.9),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(25.0),
                   ),
