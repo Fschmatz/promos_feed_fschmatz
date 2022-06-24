@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:promos_feed_fschmatz/widgets/promo_tile_hm.dart';
 import 'package:web_scraper/web_scraper.dart';
 import 'package:promos_feed_fschmatz/classes/feed.dart';
-import 'package:promos_feed_fschmatz/configs/settings_page.dart';
+import 'package:promos_feed_fschmatz/configs/settings.dart';
 
 import '../widgets/sliver_app_bar.dart';
 

@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:promos_feed_fschmatz/classes/feed.dart';
-import 'package:promos_feed_fschmatz/configs/settings_page.dart';
+import 'package:promos_feed_fschmatz/configs/settings.dart';
 import 'package:promos_feed_fschmatz/widgets/promo_tile.dart';
 import 'package:webfeed/webfeed.dart';
 import 'package:jiffy/jiffy.dart';

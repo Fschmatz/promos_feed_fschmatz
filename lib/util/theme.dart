@@ -9,21 +9,14 @@ ThemeData light = ThemeData(
     primaryColor: const Color(0xFFFFFFFF),
     scaffoldBackgroundColor: const Color(0xFFFFFFFF),
     colorScheme: ColorScheme.light(
-        background: const Color(0xFFF0F2F2),
-        primary: Colors.red.shade600,
-        secondary: Colors.red.shade600,
+      background: const Color(0xFFF0F2F2),
+      primary: Colors.red.shade600,
+      secondary: Colors.red.shade600,
     ),
     appBarTheme: const AppBarTheme(
-        surfaceTintColor: Color(0xFFFFFFFF),
-        color: Color(0xFFFFFFFF),
-        elevation: 0,
-        iconTheme: IconThemeData(
-            color: Color(0xFF000000)
-        ),
-        titleTextStyle: TextStyle(
-            fontSize: 22,
-            fontWeight: FontWeight.w400,
-            color: Color(0xFF000000))),
+      surfaceTintColor: Color(0xFFFFFFFF),
+      color: Color(0xFFFFFFFF),
+    ),
     cardTheme: const CardTheme(
       color: Color(0xFFF5F3F3),
     ),
@@ -35,9 +28,6 @@ ThemeData light = ThemeData(
     ),
     dialogTheme: const DialogTheme(
       backgroundColor: Color(0xFFFFFFFF),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(28)),
-      ),
     ),
     snackBarTheme: const SnackBarThemeData(
       actionTextColor: Color(0xFFE87169),
@@ -45,13 +35,13 @@ ThemeData light = ThemeData(
     navigationBarTheme: NavigationBarThemeData(
         backgroundColor: const Color(0xFFE9E6E6),
         indicatorColor: Colors.red.shade600,
-        iconTheme: MaterialStateProperty.all(
-            const IconThemeData(color: Color(0xFF050505),)
-        ),
+        iconTheme: MaterialStateProperty.all(const IconThemeData(
+          color: Color(0xFF050505),
+        )),
         labelTextStyle: MaterialStateProperty.all(const TextStyle(
             color: Color(0xFF050505), fontWeight: FontWeight.w500))),
     bottomSheetTheme:
-    const BottomSheetThemeData(modalBackgroundColor: Color(0xFFFFFFFF)));
+        const BottomSheetThemeData(modalBackgroundColor: Color(0xFFFFFFFF)));
 
 ThemeData dark = ThemeData(
     useMaterial3: true,
@@ -63,28 +53,17 @@ ThemeData dark = ThemeData(
     scaffoldBackgroundColor: const Color(0xFF222022),
     colorScheme: const ColorScheme.dark(
         background: Color(0xFF222022),
-        primary:  Color(0xFFE87169),
-        secondary: Color(0xFFDE7973)
-    ),
+        primary: Color(0xFFE87169),
+        secondary: Color(0xFFE7827C)),
     appBarTheme: const AppBarTheme(
-        surfaceTintColor: Color(0xFF222022),
-        color: Color(0xFF222022),
-        elevation: 0,
-        iconTheme: IconThemeData(
-            color: Color(0xFFFFFFFF)
-        ),
-        titleTextStyle: TextStyle(
-            fontSize: 22,
-            fontWeight: FontWeight.w400,
-            color: Color(0xFFFFFFFF))),
+      surfaceTintColor: Color(0xFF222022),
+      color: Color(0xFF222022),
+    ),
     cardTheme: const CardTheme(
-      color: Color(0xFF323032),
+      color: Color(0xFF2F2D2F),
     ),
     dialogTheme: const DialogTheme(
       backgroundColor: Color(0xFF313034),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(28)),
-      ),
     ),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       showSelectedLabels: false,
@@ -99,10 +78,10 @@ ThemeData dark = ThemeData(
     navigationBarTheme: NavigationBarThemeData(
         backgroundColor: const Color(0xFF292729),
         indicatorColor: const Color(0xFF833833),
-        iconTheme: MaterialStateProperty.all(
-            const IconThemeData(color: Color(0xFFEEE7E6),)
-        ),
+        iconTheme: MaterialStateProperty.all(const IconThemeData(
+          color: Color(0xFFEEE7E6),
+        )),
         labelTextStyle: MaterialStateProperty.all(const TextStyle(
             color: Color(0xFFEEE7E6), fontWeight: FontWeight.w500))),
     bottomSheetTheme:
-    const BottomSheetThemeData(modalBackgroundColor: Color(0xFF292729)));
+        const BottomSheetThemeData(modalBackgroundColor: Color(0xFF292729)));

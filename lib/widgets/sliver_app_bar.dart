@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../configs/settings_page.dart';
+import '../configs/settings.dart';
 
 class AppBarSliver extends StatelessWidget {
   const AppBarSliver({Key? key}) : super(key: key);

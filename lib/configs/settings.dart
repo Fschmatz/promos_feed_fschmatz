@@ -3,8 +3,8 @@ import 'package:promos_feed_fschmatz/util/app_details.dart';
 import 'package:easy_dynamic_theme/easy_dynamic_theme.dart';
 import '../util/dialog_select_theme.dart';
 import '../util/utils_functions.dart';
-import 'app_info_page.dart';
-import 'changelog_page.dart';
+import 'app_info.dart';
+import 'changelog.dart';
 
 class SettingsPage extends StatefulWidget {
   @override
@@ -38,14 +38,11 @@ class _SettingsPageState extends State<SettingsPage> {
             Card(
               margin: const EdgeInsets.fromLTRB(16, 20, 16, 25),
               color: themeColorApp,
-              shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(12)),
-              ),
               child: ListTile(
                 title: Text(
                   AppDetails.appName + " " + AppDetails.appVersion,
                   textAlign: TextAlign.center,
-                  style: const TextStyle(fontSize: 17.5, color: Colors.black),
+                  style: const TextStyle(fontSize: 17.5, color: Colors.black87),
                 ),
               ),
             ),
@@ -64,7 +61,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   }),
               leading: const Icon(Icons.brightness_6_outlined),
               title: const Text(
-                "App Theme",
+                "App theme",
               ),
               subtitle: Text(
                 getThemeStringFormatted(),
@@ -82,7 +79,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 Icons.info_outline,
               ),
               title: const Text(
-                "App Info",
+                "App info",
               ),
               onTap: () {
                 Navigator.push(

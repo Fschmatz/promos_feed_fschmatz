@@ -1,33 +1,33 @@
 class AppDetails{
 
-  static String appVersion = "1.3.5";
+  static String appVersion = "1.3.6";
   static String appName = "Promos Feed Fschmatz";
   static String repositoryLink = "https://github.com/Fschmatz/promos_feed_fschmatz";
 
   static String changelogCurrent = '''  
-1.3.5
-- HardMob Web Scraper
-- HardMob Go to Last Comment Button
-- UI Changes
-- Bug Fix
-- Flutter 3 Update
+1.3.6
+- HardMob web scraper
+- HardMob last comment button
+- UI changes
+- Bug fix
+- Flutter 3
 ''';
 
   static String changelogsOld = '''
 1.2.3
-- Bug Fixes
-- Added System Theme
+- Bug fixes
+- Added system theme
 - Material 3 NavBar
 - Hide AppBar
 
 1.1.1
 - TimeOut
-- Bug Fixes
-- Color Changes
-- Changed RSS Provider
+- Bug fixes
+- Color changes
+- Changed RSS provider
 
 1.0.0
-- Technically Usable
+- Technically usable
 
 0.4.0
 - Added HardMob Promo
@@ -35,14 +35,14 @@ class AppDetails{
 - Added For Sale Importados
 
 0.3.0
-- Added Dates
+- Added dates
 
 0.2.0
-- UI Created
+- UI created
 - Feed OK
 
 0.1.0
-- Project Start 
+- Project start 
 ''';
 
 }
