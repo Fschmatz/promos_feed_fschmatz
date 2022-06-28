@@ -40,11 +40,10 @@ class _PromoTileHmState extends State<PromoTileHm> {
 
   @override
   Widget build(BuildContext context) {
-    TextStyle detailsStyle =
-         TextStyle(
-          color: Theme.of(context).hintColor,
-            fontSize: 14,
-            fontWeight: FontWeight.w500);
+    TextStyle detailsStyle = TextStyle(
+        color: Theme.of(context).textTheme.headline6!.color!.withOpacity(0.8),
+        fontSize: 14,
+        fontWeight: FontWeight.w500);
 
     TextStyle lastCommentTimeStyle = TextStyle(
         fontSize: 12,
@@ -63,7 +62,7 @@ class _PromoTileHmState extends State<PromoTileHm> {
         promoTitle,
       ),
       subtitle: Padding(
-        padding: const EdgeInsets.only(top: 12,bottom: 4),
+        padding: const EdgeInsets.only(top: 12, bottom: 4),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -83,8 +82,12 @@ class _PromoTileHmState extends State<PromoTileHm> {
                   children: [
                     Icon(
                       Icons.mode_comment_outlined,
-                      size: 16,
-                      color: Theme.of(context).hintColor,
+                      size: 18,
+                      color: Theme.of(context)
+                          .textTheme
+                          .headline6!
+                          .color!
+                          .withOpacity(0.8),
                     ),
                     Text(widget.commentsCount, style: detailsStyle),
                   ],

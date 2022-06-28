@@ -6,34 +6,34 @@ ThemeData light = ThemeData(
       titleMedium: TextStyle(fontWeight: FontWeight.w400),
     ),
     brightness: Brightness.light,
-    primaryColor: const Color(0xFFFFFFFF),
-    scaffoldBackgroundColor: const Color(0xFFFFFFFF),
+    primaryColor: const Color(0xFFFFFEFE),
+    scaffoldBackgroundColor: const Color(0xFFFFFEFE),
     colorScheme: ColorScheme.light(
       background: const Color(0xFFF0F2F2),
       primary: Colors.red.shade600,
       secondary: Colors.red.shade600,
     ),
     appBarTheme: const AppBarTheme(
-      surfaceTintColor: Color(0xFFFFFFFF),
+      surfaceTintColor: Color(0xFFFFFEFE),
       color: Color(0xFFFFFFFF),
     ),
     cardTheme: const CardTheme(
-      color: Color(0xFFF5F3F3),
+      color: Color(0xFFF8EEE9),
     ),
-    bottomAppBarColor: const Color(0xFFE9E6E6),
+    bottomAppBarColor: const Color(0xFFECE6E6),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       showSelectedLabels: false,
       showUnselectedLabels: false,
-      backgroundColor: Color(0xFFE9E6E6),
+      backgroundColor: Color(0xFFECE6E6),
     ),
     dialogTheme: const DialogTheme(
-      backgroundColor: Color(0xFFFFFFFF),
+      backgroundColor: Color(0xFFFFFEFE),
     ),
     snackBarTheme: const SnackBarThemeData(
       actionTextColor: Color(0xFFE87169),
     ),
     navigationBarTheme: NavigationBarThemeData(
-        backgroundColor: const Color(0xFFE9E6E6),
+        backgroundColor: const Color(0xFFECE6E6),
         indicatorColor: Colors.red.shade600,
         iconTheme: MaterialStateProperty.all(const IconThemeData(
           color: Color(0xFF050505),
@@ -49,15 +49,15 @@ ThemeData dark = ThemeData(
       titleMedium: TextStyle(fontWeight: FontWeight.w400),
     ),
     brightness: Brightness.dark,
-    primaryColor: const Color(0xFF222022),
-    scaffoldBackgroundColor: const Color(0xFF222022),
+    primaryColor: const Color(0xFF1F1F1F),
+    scaffoldBackgroundColor: const Color(0xFF1F1F1F),
     colorScheme: const ColorScheme.dark(
-        background: Color(0xFF222022),
+        background: Color(0xFF1F1F1F),
         primary: Color(0xFFE87169),
         secondary: Color(0xFFE7827C)),
     appBarTheme: const AppBarTheme(
-      surfaceTintColor: Color(0xFF222022),
-      color: Color(0xFF222022),
+      surfaceTintColor: Color(0xFF1F1F1F),
+      color: Color(0xFF1F1F1F),
     ),
     cardTheme: const CardTheme(
       color: Color(0xFF2F2D2F),
