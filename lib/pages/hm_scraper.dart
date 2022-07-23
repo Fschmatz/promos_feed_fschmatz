@@ -87,7 +87,7 @@ class _HardmobScraperState extends State<HardmobScraper> {
         },
         body: AnimatedSwitcher(
           duration: const Duration(milliseconds: 600),
-          child: _loading
+          child: (_loading)
               ? Center(
                   child: CircularProgressIndicator(
                     color: Theme.of(context).colorScheme.primary,

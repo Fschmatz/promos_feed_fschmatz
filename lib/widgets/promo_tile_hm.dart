@@ -71,8 +71,8 @@ class _PromoTileHmState extends State<PromoTileHm> {
               style: lastCommentTimeStyle,
             ),
             SizedBox(
-              height: 40,
-              width: 75,
+              height: 38,
+              width: 70,
               child: TextButton(
                 onPressed: () {
                   _launchBrowser(widget.lastCommentLink);
@@ -83,18 +83,16 @@ class _PromoTileHmState extends State<PromoTileHm> {
                     Icon(
                       Icons.mode_comment_outlined,
                       size: 18,
-                      color: Theme.of(context)
-                          .textTheme
-                          .headline6!
-                          .color!
-                          .withOpacity(0.8),
+                      color: Theme.of(context).colorScheme.secondary,
                     ),
                     Text(widget.commentsCount, style: detailsStyle),
                   ],
                 ),
                 style: ElevatedButton.styleFrom(
-                  primary: Theme.of(context).cardTheme.color,
                   shape: RoundedRectangleBorder(
+                    side: BorderSide(
+                      color: Theme.of(context).disabledColor.withOpacity(0.3),
+                    ),
                     borderRadius: BorderRadius.circular(25.0),
                   ),
                 ),

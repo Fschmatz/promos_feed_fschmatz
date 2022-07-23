@@ -49,15 +49,15 @@ ThemeData dark = ThemeData(
       titleMedium: TextStyle(fontWeight: FontWeight.w400),
     ),
     brightness: Brightness.dark,
-    primaryColor: const Color(0xFF1F1F1F),
-    scaffoldBackgroundColor: const Color(0xFF1F1F1F),
+    primaryColor: const Color(0xFF1B1B1B),
+    scaffoldBackgroundColor: const Color(0xFF1B1B1B),
     colorScheme: const ColorScheme.dark(
-        background: Color(0xFF1F1F1F),
+        background: Color(0xFF1B1B1B),
         primary: Color(0xFFE87169),
         secondary: Color(0xFFE7827C)),
     appBarTheme: const AppBarTheme(
-      surfaceTintColor: Color(0xFF1F1F1F),
-      color: Color(0xFF1F1F1F),
+      surfaceTintColor: Color(0xFF1B1B1B),
+      color: Color(0xFF1B1B1B),
     ),
     cardTheme: const CardTheme(
       color: Color(0xFF2F2D2F),

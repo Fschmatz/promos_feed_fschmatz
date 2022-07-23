@@ -1,11 +1,11 @@
 class AppDetails{
 
-  static String appVersion = "1.3.6";
+  static String appVersion = "1.3.7";
   static String appName = "Promos Feed Fschmatz";
   static String repositoryLink = "https://github.com/Fschmatz/promos_feed_fschmatz";
 
   static String changelogCurrent = '''  
-1.3.6
+1.3.7
 - HardMob web scraper
 - HardMob last comment button
 - UI changes
