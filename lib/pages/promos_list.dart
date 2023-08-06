@@ -69,9 +69,7 @@ class _PromosListState extends State<PromosList> {
     return Scaffold(
       body: NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-          return <Widget>[
-            const AppBarSliver()
-          ];
+          return <Widget>[const AppBarSliver()];
         },
         body: AnimatedSwitcher(
           duration: const Duration(milliseconds: 600),
@@ -85,10 +83,10 @@ class _PromosListState extends State<PromosList> {
                   onRefresh: getRssData,
                   color: Theme.of(context).colorScheme.primary,
                   child: _feedList!.length == 1
-                      ? Center(
+                      ? const Center(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
+                            children: [
                               Icon(
                                 Icons.error_outline,
                                 size: 28,
@@ -115,28 +113,32 @@ class _PromosListState extends State<PromosList> {
                                   return Column(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
-                                    Visibility(
-                                        visible: index == 0,
-                                        child: dataTile(
-                                            _feedList![index].pubDate!,
-                                            context,
-                                            index)),
-                                    Visibility(
-                                        visible: dataDiferente(index),
-                                        child: dataTile(
-                                            _feedList![index].pubDate!,
-                                            context,
-                                            index)),
-                                    PromoTile(
-                                      key: UniqueKey(),
-                                      feed: Feed(
-                                          data: _feedList![index]
-                                              .pubDate!
-                                              .toString(),
-                                          title: _feedList![index].title!,
-                                          link: _feedList![index].link),
-                                    ),
-                                  ]);
+                                        Visibility(
+                                            visible: index == 0,
+                                            child: dataTile(
+                                                _feedList![index]
+                                                    .pubDate!
+                                                    .toString(),
+                                                context,
+                                                index)),
+                                        Visibility(
+                                            visible: dataDiferente(index),
+                                            child: dataTile(
+                                                _feedList![index]
+                                                    .pubDate!
+                                                    .toString(),
+                                                context,
+                                                index)),
+                                        PromoTile(
+                                          key: UniqueKey(),
+                                          feed: Feed(
+                                              data: _feedList![index]
+                                                  .pubDate!
+                                                  .toString(),
+                                              title: _feedList![index].title!,
+                                              link: _feedList![index].link),
+                                        ),
+                                      ]);
                                 },
                               ),
                               const SizedBox(
@@ -150,7 +152,7 @@ class _PromosListState extends State<PromosList> {
   }
 }
 
-Widget dataTile(DateTime data, BuildContext context, int index) {
+Widget dataTile(String data, BuildContext context, int index) {
   Color corDataTile = Theme.of(context).colorScheme.primary.withOpacity(0.9);
 
   return ListTile(

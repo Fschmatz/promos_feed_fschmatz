@@ -42,7 +42,7 @@ class _PromoTileHmState extends State<PromoTileHm> {
   Widget build(BuildContext context) {
     TextStyle detailsStyle = TextStyle(
         color: Theme.of(context).textTheme.headline6!.color!.withOpacity(0.8),
-        fontSize: 14,
+        fontSize: 12,
         fontWeight: FontWeight.w500);
 
     TextStyle lastCommentTimeStyle = TextStyle(
@@ -51,7 +51,7 @@ class _PromoTileHmState extends State<PromoTileHm> {
         color: Theme.of(context).colorScheme.secondary);
 
     return ListTile(
-      contentPadding: const EdgeInsets.fromLTRB(16, 8, 16, 5),
+      contentPadding:   const EdgeInsets.fromLTRB(16, 0, 12, 0),
       onTap: () {
         _launchBrowser(widget.feed!.link!);
       },
@@ -61,45 +61,37 @@ class _PromoTileHmState extends State<PromoTileHm> {
       title: Text(
         promoTitle,
       ),
-      subtitle: Padding(
-        padding: const EdgeInsets.only(top: 12, bottom: 4),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              widget.lastCommentTime.trim(),
-              style: lastCommentTimeStyle,
-            ),
-            SizedBox(
-              height: 38,
-              width: 70,
-              child: TextButton(
-                onPressed: () {
-                  _launchBrowser(widget.lastCommentLink);
-                },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Icon(
-                      Icons.mode_comment_outlined,
-                      size: 18,
-                      color: Theme.of(context).colorScheme.secondary,
-                    ),
-                    Text(widget.commentsCount, style: detailsStyle),
-                  ],
-                ),
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    side: BorderSide(
-                      color: Theme.of(context).disabledColor.withOpacity(0.3),
-                    ),
-                    borderRadius: BorderRadius.circular(25.0),
-                  ),
-                ),
+      trailing: SizedBox(
+        height: 38,
+        width: 68,
+        child: TextButton(
+          onPressed: () {
+            _launchBrowser(widget.lastCommentLink);
+          },
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Icon(
+                Icons.mode_comment_outlined,
+                size: 16,
+                color: Theme.of(context).colorScheme.secondary,
               ),
+              Text(widget.commentsCount, style: detailsStyle),
+            ],
+          ),
+          style: ElevatedButton.styleFrom(
+            shape: RoundedRectangleBorder(
+              side: BorderSide(
+                color: Theme.of(context).dividerTheme.color!
+              ),
+              borderRadius: BorderRadius.circular(25.0),
             ),
-          ],
+          ),
         ),
+      ),
+      subtitle: Text(
+        widget.lastCommentTime.trim(),
+        style: lastCommentTimeStyle,
       ),
     );
   }

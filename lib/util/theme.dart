@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 
 ThemeData light = ThemeData(
     useMaterial3: true,
-    textTheme: const TextTheme(
-      titleMedium: TextStyle(fontWeight: FontWeight.w400),
-    ),
     brightness: Brightness.light,
     primaryColor: const Color(0xFFFFFEFE),
     scaffoldBackgroundColor: const Color(0xFFFFFEFE),
@@ -17,8 +14,12 @@ ThemeData light = ThemeData(
       surfaceTintColor: Color(0xFFFFFEFE),
       color: Color(0xFFFFFFFF),
     ),
+    dividerTheme: const DividerThemeData(
+      color: Color(0xFFF4F0F0),
+    ),
     cardTheme: const CardTheme(
-      color: Color(0xFFF8EEE9),
+      color: Color(0xFFF4F0F0),
+      surfaceTintColor: Color(0xFFF4F0F0),
     ),
     bottomAppBarColor: const Color(0xFFECE6E6),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
@@ -33,6 +34,7 @@ ThemeData light = ThemeData(
       actionTextColor: Color(0xFFE87169),
     ),
     navigationBarTheme: NavigationBarThemeData(
+        surfaceTintColor: const Color(0xFFECE6E6),
         backgroundColor: const Color(0xFFECE6E6),
         indicatorColor: Colors.red.shade600,
         iconTheme: MaterialStateProperty.all(const IconThemeData(
@@ -45,43 +47,45 @@ ThemeData light = ThemeData(
 
 ThemeData dark = ThemeData(
     useMaterial3: true,
-    textTheme: const TextTheme(
-      titleMedium: TextStyle(fontWeight: FontWeight.w400),
-    ),
     brightness: Brightness.dark,
-    primaryColor: const Color(0xFF1B1B1B),
-    scaffoldBackgroundColor: const Color(0xFF1B1B1B),
+    primaryColor: const Color(0xFF181313),
+    scaffoldBackgroundColor: const Color(0xFF181313),
     colorScheme: const ColorScheme.dark(
-        background: Color(0xFF1B1B1B),
-        primary: Color(0xFFE87169),
-        secondary: Color(0xFFE7827C)),
+        background: Color(0xFF181313),
+        primary: Color(0xFFFC9FA3),
+        secondary: Color(0xFFFC9FA3)),
     appBarTheme: const AppBarTheme(
-      surfaceTintColor: Color(0xFF1B1B1B),
-      color: Color(0xFF1B1B1B),
+      surfaceTintColor: Color(0xFF181313),
+      color: Color(0xFF181313),
     ),
     cardTheme: const CardTheme(
-      color: Color(0xFF2F2D2F),
+      surfaceTintColor: Color(0xFF241F1F),
+      color: Color(0xFF241F1F),
     ),
     dialogTheme: const DialogTheme(
       backgroundColor: Color(0xFF313034),
     ),
+    dividerTheme: const DividerThemeData(
+      color: Color(0xFF322929),
+    ),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       showSelectedLabels: false,
       showUnselectedLabels: false,
-      backgroundColor: Color(0xFF292729),
+      backgroundColor: Color(0xFF322626),
     ),
-    bottomAppBarColor: const Color(0xFF292729),
+    bottomAppBarColor: const Color(0xFF322626),
     snackBarTheme: SnackBarThemeData(
       backgroundColor: const Color(0xFFF0F0F0),
       actionTextColor: Colors.red[700],
     ),
     navigationBarTheme: NavigationBarThemeData(
-        backgroundColor: const Color(0xFF292729),
-        indicatorColor: const Color(0xFF833833),
+        surfaceTintColor: const Color(0xFF322626),
+        backgroundColor: const Color(0xFF322626),
+        indicatorColor: const Color(0xFF5D3F40),
         iconTheme: MaterialStateProperty.all(const IconThemeData(
           color: Color(0xFFEEE7E6),
         )),
         labelTextStyle: MaterialStateProperty.all(const TextStyle(
             color: Color(0xFFEEE7E6), fontWeight: FontWeight.w500))),
     bottomSheetTheme:
-        const BottomSheetThemeData(modalBackgroundColor: Color(0xFF292729)));
+        const BottomSheetThemeData(modalBackgroundColor: Color(0xFF322626)));

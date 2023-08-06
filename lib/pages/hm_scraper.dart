@@ -99,8 +99,9 @@ class _HardmobScraperState extends State<HardmobScraper> {
                   child: ListView(
                       physics: const AlwaysScrollableScrollPhysics(),
                       children: [
-                        ListView.builder(
+                        ListView.separated(
                           physics: const NeverScrollableScrollPhysics(),
+                          separatorBuilder: (BuildContext context, int index) => const Divider(),
                           shrinkWrap: true,
                           itemCount: _titleList.length,
                           itemBuilder: (context, index) {

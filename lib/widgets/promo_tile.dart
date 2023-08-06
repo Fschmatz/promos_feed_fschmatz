@@ -23,27 +23,28 @@ class _PromoTileState extends State<PromoTile> {
   }
 
   //URL LAUNCHER
-  _launchBrowser(String url) async {
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Error';
-    }
-  }
+ _launchBrowser(String url) async {
+   launchUrl(
+     Uri.parse(url),
+     mode: LaunchMode.externalApplication,
+   );
+ }
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      contentPadding: const EdgeInsets.fromLTRB(16, 5, 16, 5),
-      onTap: () {
-        _launchBrowser(widget.feed!.link!);
-      },
-      title: Text(
-        promoTitle,
+    return Card(
+      margin:   const EdgeInsets.fromLTRB(16, 5, 16, 5),
+      child: ListTile(
+        onTap: () {
+          _launchBrowser(widget.feed!.link!);
+        },
+        title: Text(
+          promoTitle,
+        ),
+        onLongPress:  () {
+          Share.share(widget.feed!.link!);
+        },
       ),
-      onLongPress:  () {
-        Share.share(widget.feed!.link!);
-      },
     );
   }
 }
