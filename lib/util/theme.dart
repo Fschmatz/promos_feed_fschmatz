@@ -59,8 +59,8 @@ ThemeData dark = ThemeData(
       color: Color(0xFF181313),
     ),
     cardTheme: const CardTheme(
-      surfaceTintColor: Color(0xFF241F1F),
-      color: Color(0xFF241F1F),
+      surfaceTintColor: Color(0xFF261F1F),
+      color: Color(0xFF261F1F),
     ),
     dialogTheme: const DialogTheme(
       backgroundColor: Color(0xFF313034),

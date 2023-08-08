@@ -13,8 +13,7 @@ class PromoTile extends StatefulWidget {
 }
 
 class _PromoTileState extends State<PromoTile> {
-
- String promoTitle = '';
+  String promoTitle = '';
 
   @override
   void initState() {
@@ -23,25 +22,27 @@ class _PromoTileState extends State<PromoTile> {
   }
 
   //URL LAUNCHER
- _launchBrowser(String url) async {
-   launchUrl(
-     Uri.parse(url),
-     mode: LaunchMode.externalApplication,
-   );
- }
+  _launchBrowser(String url) async {
+    launchUrl(
+      Uri.parse(url),
+      mode: LaunchMode.externalApplication,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin:   const EdgeInsets.fromLTRB(16, 5, 16, 5),
+      margin: const EdgeInsets.fromLTRB(16, 5, 16, 5),
       child: ListTile(
+        contentPadding: const EdgeInsets.fromLTRB(16, 2, 16, 2),
         onTap: () {
           _launchBrowser(widget.feed!.link!);
         },
         title: Text(
           promoTitle,
+          style: const TextStyle(fontSize: 15),
         ),
-        onLongPress:  () {
+        onLongPress: () {
           Share.share(widget.feed!.link!);
         },
       ),

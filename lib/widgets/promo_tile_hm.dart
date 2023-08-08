@@ -30,6 +30,16 @@ class _PromoTileHmState extends State<PromoTileHm> {
     super.initState();
   }
 
+  String formatNumber(String numberStr) {
+    int number = int.parse(numberStr.replaceAll('.', ''));
+    if (number > 999) {
+      int thousands = (number / 1000).floor();
+      return '$thousands' 'k+';
+    } else {
+      return number.toString();
+    }
+  }
+
   //URL LAUNCHER
   _launchBrowser(String url) async {
     launchUrl(
@@ -51,7 +61,7 @@ class _PromoTileHmState extends State<PromoTileHm> {
         color: Theme.of(context).colorScheme.secondary);
 
     return ListTile(
-      contentPadding:   const EdgeInsets.fromLTRB(16, 0, 12, 0),
+      contentPadding: const EdgeInsets.fromLTRB(16, 0, 12, 0),
       onTap: () {
         _launchBrowser(widget.feed!.link!);
       },
@@ -60,6 +70,7 @@ class _PromoTileHmState extends State<PromoTileHm> {
       },
       title: Text(
         promoTitle,
+        style: const TextStyle(fontSize: 15),
       ),
       trailing: SizedBox(
         height: 38,
@@ -76,14 +87,12 @@ class _PromoTileHmState extends State<PromoTileHm> {
                 size: 16,
                 color: Theme.of(context).colorScheme.secondary,
               ),
-              Text(widget.commentsCount, style: detailsStyle),
+              Text(formatNumber(widget.commentsCount), style: detailsStyle),
             ],
           ),
           style: ElevatedButton.styleFrom(
             shape: RoundedRectangleBorder(
-              side: BorderSide(
-                color: Theme.of(context).dividerTheme.color!
-              ),
+              side: BorderSide(color: Theme.of(context).dividerTheme.color!),
               borderRadius: BorderRadius.circular(25.0),
             ),
           ),
