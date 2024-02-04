@@ -10,7 +10,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  int _currentIndex = 0;
+  /*int _currentIndex = 0;
   final List<Widget> _feedList = [
     HardmobScraper(
       key: UniqueKey(),
@@ -24,13 +24,17 @@ class _HomeState extends State<Home> {
       urlFeed:
           'https://forum.adrenaline.com.br/forums/produtos-importados.245/index.rss',
     ),
-  ];
+  ];*/
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(child: _feedList[_currentIndex]),
-      bottomNavigationBar: NavigationBar(
+      body: SafeArea(
+        child: HardmobScraper(
+          key: UniqueKey(),
+        ),
+      ),
+/*      bottomNavigationBar: NavigationBar(
         selectedIndex: _currentIndex,
         onDestinationSelected: (index) {
           setState(() {
@@ -60,7 +64,7 @@ class _HomeState extends State<Home> {
             label: 'Importados',
           ),
         ],
-      ),
+      ),*/
     );
   }
 }

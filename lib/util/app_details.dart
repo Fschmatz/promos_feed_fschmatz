@@ -1,11 +1,12 @@
 class AppDetails{
 
-  static String appVersion = "1.4.2";
+  static String appVersion = "1.4.3";
   static String appName = "Promos Feed Fschmatz";
   static String repositoryLink = "https://github.com/Fschmatz/promos_feed_fschmatz";
 
   static String changelogCurrent = '''  
-1.4.2
+1.4.3
+- Removed other feeds
 - UI changes
 - Bug fix
 - Flutter 3.10

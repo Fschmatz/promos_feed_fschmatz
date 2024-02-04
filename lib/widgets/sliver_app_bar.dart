@@ -7,7 +7,7 @@ class AppBarSliver extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  SliverAppBar(
-      title: const Text('Promos Feed'),
+      title: const Text('Promos Feed - Hardmob'),
       pinned: false,
       floating: true,
       snap: true,
