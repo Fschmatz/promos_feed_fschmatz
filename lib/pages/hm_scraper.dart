@@ -31,8 +31,6 @@ class _HardmobScraperState extends State<HardmobScraper> {
   }
 
   Future<void> parseData() async {
-
-
     final webScraper = WebScraper(mainUrl);
     if (await webScraper.loadWebPage(sectionUrl)) {
       _titleList = webScraper.getElement(
@@ -120,7 +118,7 @@ class _HardmobScraperState extends State<HardmobScraper> {
                           },
                         ),
                         const SizedBox(
-                          height: 30,
+                          height: 50,
                         )
                       ]),
                 ),

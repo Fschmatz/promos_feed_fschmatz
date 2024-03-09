@@ -51,14 +51,14 @@ class _PromoTileHmState extends State<PromoTileHm> {
   @override
   Widget build(BuildContext context) {
     TextStyle detailsStyle = TextStyle(
-        color: Theme.of(context).textTheme.headline6!.color!.withOpacity(0.8),
         fontSize: 12,
-        fontWeight: FontWeight.w500);
+        fontWeight: FontWeight.w500,
+        color: Theme.of(context).colorScheme.secondary);
 
     TextStyle lastCommentTimeStyle = TextStyle(
         fontSize: 12,
         fontWeight: FontWeight.w500,
-        color: Theme.of(context).colorScheme.secondary);
+        color: Theme.of(context).colorScheme.tertiary);
 
     return ListTile(
       contentPadding: const EdgeInsets.fromLTRB(16, 0, 12, 0),
@@ -70,6 +70,8 @@ class _PromoTileHmState extends State<PromoTileHm> {
       },
       title: Text(
         promoTitle,
+        maxLines: 5,
+        overflow: TextOverflow.ellipsis,
         style: const TextStyle(fontSize: 15),
       ),
       trailing: SizedBox(
@@ -92,7 +94,7 @@ class _PromoTileHmState extends State<PromoTileHm> {
           ),
           style: ElevatedButton.styleFrom(
             shape: RoundedRectangleBorder(
-              side: BorderSide(color: Theme.of(context).dividerTheme.color!),
+              side: BorderSide(color: Theme.of(context).colorScheme.secondaryContainer),
               borderRadius: BorderRadius.circular(25.0),
             ),
           ),
