@@ -15,7 +15,7 @@ class _AppState extends State<App> {
   void initState() {
     super.initState();
 
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+    //SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
   }
 
   @override
@@ -26,7 +26,7 @@ class _AppState extends State<App> {
 
     return AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle(
-          systemNavigationBarColor: topOverlayColor,
+          systemNavigationBarColor: Colors.transparent,
           statusBarIconBrightness: iconBrightness,
           statusBarColor: topOverlayColor,
           systemStatusBarContrastEnforced: false,

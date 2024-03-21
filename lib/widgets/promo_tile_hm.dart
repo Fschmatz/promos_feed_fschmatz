@@ -26,8 +26,9 @@ class _PromoTileHmState extends State<PromoTileHm> {
 
   @override
   void initState() {
-    promoTitle = widget.feed!.title!;
     super.initState();
+
+    promoTitle = widget.feed!.title!;
   }
 
   String formatNumber(String numberStr) {

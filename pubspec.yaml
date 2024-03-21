@@ -1,7 +1,7 @@
 name: promos_feed_fschmatz
 description: Flutter project.
 publish_to: 'none'
-version: 1.5.0
+version: 1.5.2
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
@@ -25,6 +25,7 @@ dev_dependencies:
   web_scraper:
   flutter_lints: ^1.0.0
   dynamic_color: ^1.6.9
+  fluttertoast:
 
 flutter:
   uses-material-design: true
