@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:promos_feed_fschmatz/pages/home.dart';
+import 'package:promos_feed_fschmatz/pages/hm_scraper.dart';
 
 class App extends StatefulWidget {
   const App({Key? key}) : super(key: key);
@@ -15,7 +15,7 @@ class _AppState extends State<App> {
   void initState() {
     super.initState();
 
-    //SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
   }
 
   @override
@@ -32,7 +32,7 @@ class _AppState extends State<App> {
           systemStatusBarContrastEnforced: false,
           systemNavigationBarIconBrightness: iconBrightness,
         ),
-        child: const Home());
+        child: const HardmobScraper());
 
   }
 }
