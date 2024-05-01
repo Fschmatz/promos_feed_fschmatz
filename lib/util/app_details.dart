@@ -1,11 +1,11 @@
 class AppDetails{
 
-  static String appVersion = "1.5.2";
+  static String appVersion = "1.5.3";
   static String appName = "Promos Feed Fschmatz";
   static String repositoryLink = "https://github.com/Fschmatz/promos_feed_fschmatz";
 
   static String changelogCurrent = '''  
-1.5.2
+1.5.3
 - Monet
 - Small fixes
 - Flutter 3.19

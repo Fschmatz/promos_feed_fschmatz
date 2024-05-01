@@ -14,10 +14,10 @@ class PromoTileHm extends StatefulWidget {
 
   PromoTileHm(
       {Key? key,
-      required this.feed,
-      required this.commentsCount,
-      required this.lastCommentTime,
-      required this.lastCommentLink})
+        required this.feed,
+        required this.commentsCount,
+        required this.lastCommentTime,
+        required this.lastCommentLink})
       : super(key: key);
 }
 
@@ -77,26 +77,20 @@ class _PromoTileHmState extends State<PromoTileHm> {
       ),
       trailing: SizedBox(
         height: 38,
-        width: 68,
-        child: TextButton(
+        child: TextButton.icon(
+          icon:  Icon(
+            Icons.mode_comment_outlined,
+            size: 16,
+            color: Theme.of(context).colorScheme.secondary,
+          ),
           onPressed: () {
             _launchBrowser(widget.lastCommentLink);
           },
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Icon(
-                Icons.mode_comment_outlined,
-                size: 16,
-                color: Theme.of(context).colorScheme.secondary,
-              ),
-              Text(formatNumber(widget.commentsCount), style: detailsStyle),
-            ],
-          ),
+          label: Text(formatNumber(widget.commentsCount), style: detailsStyle),
           style: ElevatedButton.styleFrom(
             shape: RoundedRectangleBorder(
               side: BorderSide(color: Theme.of(context).colorScheme.secondaryContainer),
-              borderRadius: BorderRadius.circular(25.0),
+              borderRadius: BorderRadius.circular(25),
             ),
           ),
         ),

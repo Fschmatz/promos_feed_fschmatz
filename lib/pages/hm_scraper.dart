@@ -22,6 +22,7 @@ class _HardmobScraperState extends State<HardmobScraper> {
   List<Map<String, dynamic>> _commentsCount = [];
   List<Map<String, dynamic>> _lastCommentLink = [];
   List<Map<String, dynamic>> _lastCommentTime = [];
+  bool showTimeoutReloadButton = false;
 
   @override
   void initState() {
@@ -32,33 +33,47 @@ class _HardmobScraperState extends State<HardmobScraper> {
 
   Future<void> parseData() async {
     final webScraper = WebScraper(mainUrl);
-    if (await webScraper.loadWebPage(sectionUrl)) {
-      _titleList = webScraper.getElement('li.threadbit > div > div > div.inner > h3 > a.title', ['href']);
 
-      _commentsCount = webScraper.getElement('li.threadbit > div > ul > li > a', []);
+    try {
+      if (await webScraper.loadWebPage(sectionUrl).timeout(const Duration(seconds: 10))) {
+        _titleList = webScraper.getElement('li.threadbit > div > div > div.inner > h3 > a.title', ['href']);
 
-      _lastCommentLink = webScraper.getElement('li.threadbit > div > dl > dd > a', ['href']);
+        _commentsCount = webScraper.getElement('li.threadbit > div > ul > li > a', []);
 
-      _lastCommentTime = webScraper.getElement('li.threadbit > div > dl > dd:nth-child(7)', []);
+        _lastCommentLink = webScraper.getElement('li.threadbit > div > dl > dd > a', ['href']);
 
-      //REMOVE FIXED POSTS
-      try {
-        _titleList.removeRange(0, 2);
-        _commentsCount.removeRange(0, 2);
-        _lastCommentLink.removeRange(0, 2);
-        _lastCommentTime.removeRange(0, 2);
-      } on Exception catch (e) {
+        _lastCommentTime = webScraper.getElement('li.threadbit > div > dl > dd:nth-child(7)', []);
+
+        //REMOVE FIXED POSTS
+        try {
+          _titleList.removeRange(0, 2);
+          _commentsCount.removeRange(0, 2);
+          _lastCommentLink.removeRange(0, 2);
+          _lastCommentTime.removeRange(0, 2);
+        } on Exception catch (e) {
+          _showErrorToast();
+        }
+      } else {
         _showErrorToast();
       }
-    } else {
-      _showErrorToast();
-    }
 
-    if (mounted) {
+      if (mounted) {
+        setState(() {
+           _loading = false;
+        });
+      }
+    } on TimeoutException {
       setState(() {
-        _loading = false;
+        showTimeoutReloadButton = true;
       });
     }
+  }
+
+  Future<void> reloadData() async {
+    setState(() {
+      _loading = true;
+    });
+    parseData();
   }
 
   void _showErrorToast() {
@@ -89,13 +104,23 @@ class _HardmobScraperState extends State<HardmobScraper> {
       body: AnimatedSwitcher(
         duration: const Duration(milliseconds: 600),
         child: (_loading)
-            ? Center(
-                child: CircularProgressIndicator(
-                  color: Theme.of(context).colorScheme.primary,
-                ),
-              )
+            ? showTimeoutReloadButton
+                ? Center(
+                    child: OutlinedButton.icon(
+                      icon: const Icon(
+                        Icons.refresh_outlined,
+                      ),
+                      onPressed: reloadData,
+                      label: const Text("Reload"),
+                    ),
+                  )
+                : Center(
+                    child: CircularProgressIndicator(
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
+                  )
             : RefreshIndicator(
-                onRefresh: parseData,
+                onRefresh: reloadData,
                 color: Theme.of(context).colorScheme.primary,
                 child: ListView(physics: const AlwaysScrollableScrollPhysics(), children: [
                   ListView.separated(
