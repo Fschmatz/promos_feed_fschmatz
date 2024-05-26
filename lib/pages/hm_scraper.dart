@@ -59,7 +59,7 @@ class _HardmobScraperState extends State<HardmobScraper> {
 
       if (mounted) {
         setState(() {
-           _loading = false;
+          _loading = false;
         });
       }
     } on TimeoutException {
@@ -85,64 +85,70 @@ class _HardmobScraperState extends State<HardmobScraper> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Promos Feed - Hardmob'),
-        actions: [
-          IconButton(
-              icon: const Icon(
-                Icons.settings_outlined,
-              ),
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (BuildContext context) => const SettingsPage(),
-                    ));
-              }),
-        ],
-      ),
-      body: AnimatedSwitcher(
-        duration: const Duration(milliseconds: 600),
-        child: (_loading)
-            ? showTimeoutReloadButton
-                ? Center(
-                    child: OutlinedButton.icon(
-                      icon: const Icon(
-                        Icons.refresh_outlined,
+      body: NestedScrollView(
+        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+          return <Widget>[
+            SliverAppBar.medium(
+              title: const Text('Promos Feed - Hardmob'),
+              actions: [
+                IconButton(
+                    icon: const Icon(
+                      Icons.settings_outlined,
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (BuildContext context) => const SettingsPage(),
+                          ));
+                    }),
+              ],
+            ),
+          ];
+        },
+        body: AnimatedSwitcher(
+          duration: const Duration(milliseconds: 450),
+          child: (_loading)
+              ? showTimeoutReloadButton
+                  ? Center(
+                      child: OutlinedButton.icon(
+                        icon: const Icon(
+                          Icons.refresh_outlined,
+                        ),
+                        onPressed: reloadData,
+                        label: const Text("Reload"),
                       ),
-                      onPressed: reloadData,
-                      label: const Text("Reload"),
+                    )
+                  : Center(
+                      child: CircularProgressIndicator(
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
+                    )
+              : RefreshIndicator(
+                  onRefresh: reloadData,
+                  color: Theme.of(context).colorScheme.primary,
+                  child: ListView(physics: const AlwaysScrollableScrollPhysics(), children: [
+                    ListView.separated(
+                      physics: const NeverScrollableScrollPhysics(),
+                      separatorBuilder: (BuildContext context, int index) => const Divider(height: 0,),
+                      shrinkWrap: true,
+                      itemCount: _titleList.length,
+                      itemBuilder: (context, index) {
+                        return PromoTileHm(
+                          key: UniqueKey(),
+                          feed: Feed(data: ' ', title: _titleList[index]['title'], link: linkUrl + _titleList[index]['attributes']['href']),
+                          commentsCount: _commentsCount[index]['title'],
+                          lastCommentTime: _lastCommentTime[index]['title'],
+                          lastCommentLink: linkUrl + _lastCommentLink[index]['attributes']['href'],
+                        );
+                      },
                     ),
-                  )
-                : Center(
-                    child: CircularProgressIndicator(
-                      color: Theme.of(context).colorScheme.primary,
-                    ),
-                  )
-            : RefreshIndicator(
-                onRefresh: reloadData,
-                color: Theme.of(context).colorScheme.primary,
-                child: ListView(physics: const AlwaysScrollableScrollPhysics(), children: [
-                  ListView.separated(
-                    physics: const NeverScrollableScrollPhysics(),
-                    separatorBuilder: (BuildContext context, int index) => const Divider(),
-                    shrinkWrap: true,
-                    itemCount: _titleList.length,
-                    itemBuilder: (context, index) {
-                      return PromoTileHm(
-                        key: UniqueKey(),
-                        feed: Feed(data: ' ', title: _titleList[index]['title'], link: linkUrl + _titleList[index]['attributes']['href']),
-                        commentsCount: _commentsCount[index]['title'],
-                        lastCommentTime: _lastCommentTime[index]['title'],
-                        lastCommentLink: linkUrl + _lastCommentLink[index]['attributes']['href'],
-                      );
-                    },
-                  ),
-                  const SizedBox(
-                    height: 50,
-                  )
-                ]),
-              ),
+                    const SizedBox(
+                      height: 50,
+                    )
+                  ]),
+                ),
+        ),
       ),
     );
   }

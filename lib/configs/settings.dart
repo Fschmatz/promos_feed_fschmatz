@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:promos_feed_fschmatz/util/app_details.dart';
 import 'package:easy_dynamic_theme/easy_dynamic_theme.dart';
 import '../util/dialog_select_theme.dart';
-import '../util/utils_functions.dart';
+import '../util/utils.dart';
 import 'app_info.dart';
 import 'changelog.dart';
 
@@ -14,6 +14,7 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
+
   String getThemeStringFormatted() {
     String theme = EasyDynamicTheme.of(context)
         .themeMode
@@ -22,12 +23,14 @@ class _SettingsPageState extends State<SettingsPage> {
     if (theme == 'system') {
       theme = 'system default';
     }
-    return capitalizeFirstLetterString(theme);
+    return Utils().capitalizeFirstLetterString(theme);
   }
 
   @override
   Widget build(BuildContext context) {
-    Color themeColorApp = Theme.of(context).colorScheme.primary;
+    final theme = Theme.of(context);
+    Color primaryColor = theme.colorScheme.primary;
+    Color onPrimaryColor = theme.colorScheme.onPrimary;
 
     return Scaffold(
         appBar: AppBar(
@@ -37,12 +40,12 @@ class _SettingsPageState extends State<SettingsPage> {
           children: <Widget>[
             Card(
               margin: const EdgeInsets.fromLTRB(16, 20, 16, 25),
-              color: themeColorApp,
+              color: primaryColor,
               child: ListTile(
                 title: Text(
                   AppDetails.appName + " " + AppDetails.appVersion,
                   textAlign: TextAlign.center,
-                  style: const TextStyle(fontSize: 17.5, color: Colors.black87),
+                  style: TextStyle(fontSize: 17.5, color: onPrimaryColor),
                 ),
               ),
             ),
@@ -51,7 +54,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w500,
-                      color: themeColorApp)),
+                      color: primaryColor)),
             ),
             ListTile(
               onTap: () => showDialog(
@@ -72,7 +75,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w500,
-                      color: themeColorApp)),
+                      color: primaryColor)),
             ),
             ListTile(
               leading: const Icon(

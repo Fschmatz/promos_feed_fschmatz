@@ -3,6 +3,8 @@ import 'package:promos_feed_fschmatz/classes/feed.dart';
 import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../util/utils.dart';
+
 class PromoTileHm extends StatefulWidget {
   @override
   _PromoTileHmState createState() => _PromoTileHmState();
@@ -23,6 +25,7 @@ class PromoTileHm extends StatefulWidget {
 
 class _PromoTileHmState extends State<PromoTileHm> {
   String promoTitle = '';
+  final Utils utils = Utils();
 
   @override
   void initState() {
@@ -41,30 +44,26 @@ class _PromoTileHmState extends State<PromoTileHm> {
     }
   }
 
-  //URL LAUNCHER
-  _launchBrowser(String url) async {
-    launchUrl(
-      Uri.parse(url),
-      mode: LaunchMode.externalApplication,
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    Color secondaryColor = theme.colorScheme.secondary;
+    Color tertiaryColor = theme.colorScheme.tertiary;
+
     TextStyle detailsStyle = TextStyle(
         fontSize: 12,
         fontWeight: FontWeight.w500,
-        color: Theme.of(context).colorScheme.secondary);
+        color: tertiaryColor );
 
     TextStyle lastCommentTimeStyle = TextStyle(
         fontSize: 12,
         fontWeight: FontWeight.w500,
-        color: Theme.of(context).colorScheme.tertiary);
+        color: secondaryColor);
 
     return ListTile(
-      contentPadding: const EdgeInsets.fromLTRB(16, 0, 12, 0),
+      contentPadding: const EdgeInsets.fromLTRB(16, 4, 12, 4),
       onTap: () {
-        _launchBrowser(widget.feed!.link!);
+        utils.launchBrowser(widget.feed!.link!);
       },
       onLongPress: () {
         Share.share(widget.feed!.link!);
@@ -81,15 +80,15 @@ class _PromoTileHmState extends State<PromoTileHm> {
           icon:  Icon(
             Icons.mode_comment_outlined,
             size: 16,
-            color: Theme.of(context).colorScheme.secondary,
+            color: tertiaryColor,
           ),
           onPressed: () {
-            _launchBrowser(widget.lastCommentLink);
+            utils.launchBrowser(widget.lastCommentLink);
           },
           label: Text(formatNumber(widget.commentsCount), style: detailsStyle),
           style: ElevatedButton.styleFrom(
             shape: RoundedRectangleBorder(
-              side: BorderSide(color: Theme.of(context).colorScheme.secondaryContainer),
+              side: BorderSide(color: theme.colorScheme.secondaryContainer),
               borderRadius: BorderRadius.circular(25),
             ),
           ),
