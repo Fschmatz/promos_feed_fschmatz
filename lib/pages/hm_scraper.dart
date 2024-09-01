@@ -22,7 +22,7 @@ class _HardmobScraperState extends State<HardmobScraper> {
   List<Map<String, dynamic>> _commentsCount = [];
   List<Map<String, dynamic>> _lastCommentLink = [];
   List<Map<String, dynamic>> _lastCommentTime = [];
-  bool showTimeoutReloadButton = false;
+  bool showReloadButton = false;
 
   @override
   void initState() {
@@ -36,43 +36,48 @@ class _HardmobScraperState extends State<HardmobScraper> {
 
     try {
       if (await webScraper.loadWebPage(sectionUrl).timeout(const Duration(seconds: 10))) {
+
         _titleList = webScraper.getElement('li.threadbit > div > div > div.inner > h3 > a.title', ['href']);
-
         _commentsCount = webScraper.getElement('li.threadbit > div > ul > li > a', []);
-
         _lastCommentLink = webScraper.getElement('li.threadbit > div > dl > dd > a', ['href']);
-
         _lastCommentTime = webScraper.getElement('li.threadbit > div > dl > dd:nth-child(7)', []);
 
-        //REMOVE FIXED POSTS
-        try {
-          _titleList.removeRange(0, 2);
-          _commentsCount.removeRange(0, 2);
-          _lastCommentLink.removeRange(0, 2);
-          _lastCommentTime.removeRange(0, 2);
-        } on Exception catch (e) {
-          _showErrorToast();
+        if (_titleList.isNotEmpty && _commentsCount.isNotEmpty && _lastCommentLink.isNotEmpty && _lastCommentTime.isNotEmpty) {
+          try {
+            //REMOVE FIXED POSTS
+            _titleList.removeRange(0, 3);
+            _commentsCount.removeRange(0, 3);
+            _lastCommentLink.removeRange(0, 3);
+            _lastCommentTime.removeRange(0, 3);
+          } on Exception catch (e) {
+            _showErrorToast();
+          }
+          setState(() {
+            _loading = false;
+          });
+        } else {
+          _showReloadButton();
         }
       } else {
         _showErrorToast();
       }
-
-      if (mounted) {
-        setState(() {
-          _loading = false;
-        });
-      }
     } on TimeoutException {
-      setState(() {
-        showTimeoutReloadButton = true;
-      });
+      _showReloadButton();
     }
+  }
+
+  void _showReloadButton() {
+    setState(() {
+      showReloadButton = true;
+    });
   }
 
   Future<void> reloadData() async {
     setState(() {
       _loading = true;
+      showReloadButton = false;
     });
+
     parseData();
   }
 
@@ -85,70 +90,66 @@ class _HardmobScraperState extends State<HardmobScraper> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: NestedScrollView(
-        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-          return <Widget>[
-            SliverAppBar.medium(
-              title: const Text('Promos Feed - Hardmob'),
-              actions: [
-                IconButton(
-                    icon: const Icon(
-                      Icons.settings_outlined,
-                    ),
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (BuildContext context) => const SettingsPage(),
-                          ));
-                    }),
-              ],
-            ),
-          ];
-        },
-        body: AnimatedSwitcher(
-          duration: const Duration(milliseconds: 450),
-          child: (_loading)
-              ? showTimeoutReloadButton
-                  ? Center(
-                      child: OutlinedButton.icon(
-                        icon: const Icon(
-                          Icons.refresh_outlined,
-                        ),
-                        onPressed: reloadData,
-                        label: const Text("Reload"),
+      appBar: AppBar(
+        title: const Text('Promos Feed - Hardmob'),
+        actions: [
+          IconButton(
+              icon: const Icon(
+                Icons.settings_outlined,
+              ),
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (BuildContext context) => const SettingsPage(),
+                    ));
+              }),
+        ],
+      ),
+      body: AnimatedSwitcher(
+        duration: const Duration(milliseconds: 450),
+        child: (_loading)
+            ? showReloadButton
+                ? Center(
+                    child: OutlinedButton.icon(
+                      icon: const Icon(
+                        Icons.refresh_outlined,
                       ),
-                    )
-                  : Center(
-                      child: CircularProgressIndicator(
-                        color: Theme.of(context).colorScheme.primary,
-                      ),
-                    )
-              : RefreshIndicator(
-                  onRefresh: reloadData,
-                  color: Theme.of(context).colorScheme.primary,
-                  child: ListView(physics: const AlwaysScrollableScrollPhysics(), children: [
-                    ListView.separated(
-                      physics: const NeverScrollableScrollPhysics(),
-                      separatorBuilder: (BuildContext context, int index) => const Divider(height: 0,),
-                      shrinkWrap: true,
-                      itemCount: _titleList.length,
-                      itemBuilder: (context, index) {
-                        return PromoTileHm(
-                          key: UniqueKey(),
-                          feed: Feed(data: ' ', title: _titleList[index]['title'], link: linkUrl + _titleList[index]['attributes']['href']),
-                          commentsCount: _commentsCount[index]['title'],
-                          lastCommentTime: _lastCommentTime[index]['title'],
-                          lastCommentLink: linkUrl + _lastCommentLink[index]['attributes']['href'],
-                        );
-                      },
+                      onPressed: reloadData,
+                      label: const Text("Reload"),
                     ),
-                    const SizedBox(
-                      height: 50,
-                    )
-                  ]),
-                ),
-        ),
+                  )
+                : Center(
+                    child: CircularProgressIndicator(
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
+                  )
+            : RefreshIndicator(
+                onRefresh: reloadData,
+                color: Theme.of(context).colorScheme.primary,
+                child: ListView(physics: const AlwaysScrollableScrollPhysics(), children: [
+                  ListView.separated(
+                    physics: const NeverScrollableScrollPhysics(),
+                    separatorBuilder: (BuildContext context, int index) => const Divider(
+                      height: 0,
+                    ),
+                    shrinkWrap: true,
+                    itemCount: _titleList.length,
+                    itemBuilder: (context, index) {
+                      return PromoTileHm(
+                        key: UniqueKey(),
+                        feed: Feed(data: ' ', title: _titleList[index]['title'], link: linkUrl + _titleList[index]['attributes']['href']),
+                        commentsCount: _commentsCount[index]['title'],
+                        lastCommentTime: _lastCommentTime[index]['title'],
+                        lastCommentLink: linkUrl + _lastCommentLink[index]['attributes']['href'],
+                      );
+                    },
+                  ),
+                  const SizedBox(
+                    height: 50,
+                  )
+                ]),
+              ),
       ),
     );
   }

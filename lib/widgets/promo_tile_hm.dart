@@ -88,7 +88,7 @@ class _PromoTileHmState extends State<PromoTileHm> {
           label: Text(formatNumber(widget.commentsCount), style: detailsStyle),
           style: ElevatedButton.styleFrom(
             shape: RoundedRectangleBorder(
-              side: BorderSide(color: theme.colorScheme.secondaryContainer),
+              side: BorderSide(color: theme.colorScheme.tertiaryContainer),
               borderRadius: BorderRadius.circular(25),
             ),
           ),
