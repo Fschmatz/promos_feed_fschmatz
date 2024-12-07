@@ -39,13 +39,13 @@ class _PromoTileHmState extends State<PromoTileHm> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    //Color secondaryColor = theme.colorScheme.secondary;
+    Color secondaryColor = theme.colorScheme.secondary;
     //TextStyle lastCommentTimeStyle = TextStyle(fontSize: 12, fontWeight: FontWeight.w500, color: secondaryColor);
-    Color tertiaryColor = theme.colorScheme.tertiary;
-    TextStyle detailsStyle = TextStyle(fontSize: 12, fontWeight: FontWeight.w500, color: tertiaryColor);
+    //Color tertiaryColor = theme.colorScheme.tertiary;
+    TextStyle detailsStyle = TextStyle(fontSize: 12, fontWeight: FontWeight.w500, color: secondaryColor);
 
     return ListTile(
-      contentPadding: const EdgeInsets.fromLTRB(16, 2, 12, 2),
+      contentPadding: const EdgeInsets.fromLTRB(16, 4, 16, 4),
       onTap: () {
         utils.launchBrowser(widget.feed!.link!);
       },
@@ -56,6 +56,7 @@ class _PromoTileHmState extends State<PromoTileHm> {
         promoTitle,
         maxLines: 5,
         overflow: TextOverflow.ellipsis,
+        style: const TextStyle(fontSize: 15),
       ),
       /*
       trailing: SizedBox(
@@ -91,7 +92,7 @@ class _PromoTileHmState extends State<PromoTileHm> {
               Icon(
                 Icons.mode_comment_outlined,
                 size: 12,
-                color: tertiaryColor,
+                color: secondaryColor,
               ),
               const SizedBox(
                 width: 5,
