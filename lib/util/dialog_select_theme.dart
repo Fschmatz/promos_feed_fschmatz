@@ -2,10 +2,10 @@ import 'package:easy_dynamic_theme/easy_dynamic_theme.dart';
 import 'package:flutter/material.dart';
 
 class DialogSelectTheme extends StatefulWidget {
-  const DialogSelectTheme({Key? key}) : super(key: key);
+  const DialogSelectTheme({super.key});
 
   @override
-  _DialogSelectThemeState createState() => _DialogSelectThemeState();
+  State<DialogSelectTheme> createState() => _DialogSelectThemeState();
 }
 
 class _DialogSelectThemeState extends State<DialogSelectTheme> {

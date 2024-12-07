@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:promos_feed_fschmatz/util/app_details.dart';
-import 'package:url_launcher/url_launcher.dart';
-
 import '../util/utils.dart';
 
 class AppInfoPage extends StatelessWidget {
-  const AppInfoPage({Key? key}) : super(key: key);
+  const AppInfoPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +25,7 @@ class AppInfoPage extends StatelessWidget {
           ),
           const SizedBox(height: 15),
           Center(
-            child: Text(AppDetails.appName + " " + AppDetails.appVersion,
+            child: Text("${AppDetails.appName} ${AppDetails.appVersion}",
                 style: TextStyle(
                     fontSize: 17,
                     fontWeight: FontWeight.w700,

@@ -7,20 +7,20 @@ import 'package:promos_feed_fschmatz/configs/settings.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class HardmobScraper extends StatefulWidget {
-  const HardmobScraper({Key? key}) : super(key: key);
+  const HardmobScraper({super.key});
 
   @override
-  _HardmobScraperState createState() => _HardmobScraperState();
+  State<HardmobScraper> createState() => _HardmobScraperState();
 }
 
 class _HardmobScraperState extends State<HardmobScraper> {
-  String mainUrl = 'https://www.hardmob.com.br';
-  String sectionUrl = '/forums/407-Promocoes';
+  String link = 'https://www.hardmob.com.br/forums/407-Promocoes';
   bool _loading = true;
   String linkUrl = 'https://www.hardmob.com.br/threads/';
   List<Map<String, dynamic>> _titleList = [];
   List<Map<String, dynamic>> _commentsCount = [];
-  List<Map<String, dynamic>> _lastCommentLink = [];
+
+  //List<Map<String, dynamic>> _lastCommentLink = [];
   List<Map<String, dynamic>> _lastCommentTime = [];
   bool showReloadButton = false;
 
@@ -32,22 +32,23 @@ class _HardmobScraperState extends State<HardmobScraper> {
   }
 
   Future<void> parseData() async {
-    final webScraper = WebScraper(mainUrl);
+    final webScraper = WebScraper();
 
     try {
-      if (await webScraper.loadWebPage(sectionUrl).timeout(const Duration(seconds: 10))) {
-
+      if (await webScraper.loadFullURL(link).timeout(const Duration(seconds: 10))) {
         _titleList = webScraper.getElement('li.threadbit > div > div > div.inner > h3 > a.title', ['href']);
         _commentsCount = webScraper.getElement('li.threadbit > div > ul > li > a', []);
-        _lastCommentLink = webScraper.getElement('li.threadbit > div > dl > dd > a', ['href']);
         _lastCommentTime = webScraper.getElement('li.threadbit > div > dl > dd:nth-child(7)', []);
 
-        if (_titleList.isNotEmpty && _commentsCount.isNotEmpty && _lastCommentLink.isNotEmpty && _lastCommentTime.isNotEmpty) {
+        //_lastCommentLink = webScraper.getElement('li.threadbit > div > dl > dd > a', ['href']);
+        //_lastCommentLink.isNotEmpty &&
+
+        if (_titleList.isNotEmpty && _commentsCount.isNotEmpty && _lastCommentTime.isNotEmpty) {
           try {
             //REMOVE FIXED POSTS
             _titleList.removeRange(0, 3);
             _commentsCount.removeRange(0, 3);
-            _lastCommentLink.removeRange(0, 3);
+            // _lastCommentLink.removeRange(0, 3);
             _lastCommentTime.removeRange(0, 3);
           } on Exception catch (e) {
             _showErrorToast();
@@ -91,7 +92,7 @@ class _HardmobScraperState extends State<HardmobScraper> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Promos Feed - Hardmob'),
+        title: const Text('Promos Feed - hardMOB'),
         actions: [
           IconButton(
               icon: const Icon(
@@ -141,7 +142,8 @@ class _HardmobScraperState extends State<HardmobScraper> {
                         feed: Feed(data: ' ', title: _titleList[index]['title'], link: linkUrl + _titleList[index]['attributes']['href']),
                         commentsCount: _commentsCount[index]['title'],
                         lastCommentTime: _lastCommentTime[index]['title'],
-                        lastCommentLink: linkUrl + _lastCommentLink[index]['attributes']['href'],
+                        lastCommentLink: "",
+                        //lastCommentLink: linkUrl + _lastCommentLink[index]['attributes']['href'],
                       );
                     },
                   ),

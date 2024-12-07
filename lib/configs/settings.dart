@@ -8,9 +8,9 @@ import 'changelog.dart';
 
 class SettingsPage extends StatefulWidget {
   @override
-  _SettingsPageState createState() => _SettingsPageState();
+  State<SettingsPage> createState() => _SettingsPageState();
 
-  const SettingsPage({Key? key}) : super(key: key);
+  const SettingsPage({super.key});
 }
 
 class _SettingsPageState extends State<SettingsPage> {

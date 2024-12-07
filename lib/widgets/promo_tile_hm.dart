@@ -1,26 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:promos_feed_fschmatz/classes/feed.dart';
-import 'package:share/share.dart';
-import 'package:url_launcher/url_launcher.dart';
-
 import '../util/utils.dart';
+import 'package:share_plus/share_plus.dart';
 
 class PromoTileHm extends StatefulWidget {
   @override
-  _PromoTileHmState createState() => _PromoTileHmState();
+  State<PromoTileHm> createState() => _PromoTileHmState();
 
-  Feed? feed;
-  String commentsCount;
-  String lastCommentTime;
-  String lastCommentLink;
+  final Feed? feed;
+  final String commentsCount;
+  final String lastCommentTime;
+  final String lastCommentLink;
 
-  PromoTileHm(
-      {Key? key,
-        required this.feed,
-        required this.commentsCount,
-        required this.lastCommentTime,
-        required this.lastCommentLink})
-      : super(key: key);
+  const PromoTileHm({super.key, required this.feed, required this.commentsCount, required this.lastCommentTime, required this.lastCommentLink});
 }
 
 class _PromoTileHmState extends State<PromoTileHm> {
@@ -47,21 +39,13 @@ class _PromoTileHmState extends State<PromoTileHm> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    Color secondaryColor = theme.colorScheme.secondary;
+    //Color secondaryColor = theme.colorScheme.secondary;
+    //TextStyle lastCommentTimeStyle = TextStyle(fontSize: 12, fontWeight: FontWeight.w500, color: secondaryColor);
     Color tertiaryColor = theme.colorScheme.tertiary;
-
-    TextStyle detailsStyle = TextStyle(
-        fontSize: 12,
-        fontWeight: FontWeight.w500,
-        color: tertiaryColor );
-
-    TextStyle lastCommentTimeStyle = TextStyle(
-        fontSize: 12,
-        fontWeight: FontWeight.w500,
-        color: secondaryColor);
+    TextStyle detailsStyle = TextStyle(fontSize: 12, fontWeight: FontWeight.w500, color: tertiaryColor);
 
     return ListTile(
-      contentPadding: const EdgeInsets.fromLTRB(16, 4, 12, 4),
+      contentPadding: const EdgeInsets.fromLTRB(16, 2, 12, 2),
       onTap: () {
         utils.launchBrowser(widget.feed!.link!);
       },
@@ -72,12 +56,12 @@ class _PromoTileHmState extends State<PromoTileHm> {
         promoTitle,
         maxLines: 5,
         overflow: TextOverflow.ellipsis,
-        style: const TextStyle(fontSize: 15),
       ),
+      /*
       trailing: SizedBox(
         height: 38,
         child: TextButton.icon(
-          icon:  Icon(
+          icon: Icon(
             Icons.mode_comment_outlined,
             size: 16,
             color: tertiaryColor,
@@ -94,9 +78,28 @@ class _PromoTileHmState extends State<PromoTileHm> {
           ),
         ),
       ),
-      subtitle: Text(
-        widget.lastCommentTime.trim(),
-        style: lastCommentTimeStyle,
+      */
+      subtitle: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            widget.lastCommentTime.trim(),
+            style: detailsStyle,
+          ),
+          Row(
+            children: [
+              Icon(
+                Icons.mode_comment_outlined,
+                size: 12,
+                color: tertiaryColor,
+              ),
+              const SizedBox(
+                width: 5,
+              ),
+              Text(formatNumber(widget.commentsCount), style: detailsStyle),
+            ],
+          )
+        ],
       ),
     );
   }

@@ -3,10 +3,10 @@ import 'package:flutter/services.dart';
 import 'package:promos_feed_fschmatz/pages/hm_scraper.dart';
 
 class App extends StatefulWidget {
-  const App({Key? key}) : super(key: key);
+  const App({super.key});
 
   @override
-  _AppState createState() => _AppState();
+  State<App> createState() => _AppState();
 }
 
 class _AppState extends State<App> {

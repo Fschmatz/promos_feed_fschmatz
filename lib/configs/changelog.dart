@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:promos_feed_fschmatz/util/app_details.dart';
 
 class ChangelogPage extends StatelessWidget {
-  const ChangelogPage({Key? key}) : super(key: key);
+  const ChangelogPage({super.key});
 
   @override
   Widget build(BuildContext context) {
